@@ -1,0 +1,10 @@
+# Novas imagens de renderização e conferência do processo
+# Arquivos já versionados permanecem no histórico e no repositório.
+tmp/**/*.png
+tmp/**/*.jpg
+tmp/**/*.jpeg
+
+# Arquivos locais de execução Python
+__pycache__/
+*.py[cod]
+.venv/
