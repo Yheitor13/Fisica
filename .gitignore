@@ -2,3 +2,7 @@
 __pycache__/
 *.py[cod]
 .venv/
+
+# Arquivos temporários do Office
+~$*
+.~lock.*#

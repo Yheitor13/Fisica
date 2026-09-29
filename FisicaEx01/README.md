@@ -38,3 +38,7 @@ Para cada dimensão medida três vezes, o desenvolvimento calcula a média, o de
 Os scripts em `tmp/` registram etapas diferentes da produção; não há um único comando validado para reconstruir o pacote inteiro. Alguns caminhos são específicos do Windows, inclusive fontes em `C:/Windows/Fonts/`, e há dependências como `reportlab` e ferramentas de renderização. Para consultar ou entregar o relatório, não é necessário executá-los.
 
 > **Escopo:** este repositório documenta um trabalho acadêmico. Os PDFs auxiliares, scripts e imagens de conferência complementam o relatório final; não devem ser tratados como uma versão mais recente dele.
+
+## Referências compartilhadas
+
+Consulte [referencias_gerais](../referencias_gerais/) para os materiais comuns aos próximos trabalhos. O acervo deste projeto foi preservado como registro histórico.
