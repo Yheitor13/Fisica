@@ -5,7 +5,7 @@
 | [Trabalho 01](FisicaEx01/) | Medidas, volumes e propagação de incertezas | Relatório disponível |
 | [Trabalho 02](FisicaEx02/) | Linearização | Relatório, cálculos e gráficos disponíveis |
 
-[Relatório do trabalho 01](FisicaEx01/Relatório_Final.pdf) · [Relatório do trabalho 02](FisicaEx02/Relatorio_Final.pdf) · [Planilha do trabalho 02](FisicaEx02/medidas_fisicaEX02.xlsx) · [Referências gerais](referencias_gerais/)
+[Relatório do trabalho 01](FisicaEx01/Relatório_Final.pdf) · [Relatório do trabalho 02](FisicaEx02/Relatorio_Final.pdf) · [Planilha do trabalho 02](FisicaEx02/refs/medidas_fisicaEX02.xlsx) · [Referências gerais](referencias_gerais/)
 
 ## Organização e continuidade
 
