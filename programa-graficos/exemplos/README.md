@@ -15,3 +15,10 @@ Selecionando o ajuste ponderado por 1/vY², os resultados esperados são:
 - R² ponderado: 0,9991171911338197.
 
 O ajuste ignora a contribuição horizontal, conforme o método documentado no [relatório 02](https://github.com/Yheitor13/Fisica/blob/main/FisicaEx02/Relatorio_Final.pdf). A interpretação física, as incertezas dos coeficientes e as condições de validade permanecem no relatório. Estas incertezas e condições pertencem a este experimento; não devem ser transportadas automaticamente para outras práticas.
+
+
+## Escala original e curva reconstruída
+
+`dados-originais-ex02.csv` contém X = t̄ em segundos, vX = σt em segundos, Y = x em centímetros e vY = σx = 1 cm. Esses números foram recalculados a partir da mesma planilha salva e comparados aos registros conferidos. `js/example.js` incorpora também esse conjunto e os coeficientes de precisão completa.
+
+A opção de curva usa os coeficientes C e n já obtidos pela regressão ponderada dos logaritmos: Y = C(X/X₀)ⁿ, com X₀ = 1 s. É uma reconstrução do mesmo modelo, não uma nova regressão dos dados originais. As barras permanecem as incertezas das medidas, sem faixa de confiança da curva.

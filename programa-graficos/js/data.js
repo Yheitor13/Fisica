@@ -99,7 +99,18 @@
   function csv(points) {
     return '\uFEFFX;vX;Y;vY\r\n' + points.map(p => [p.x, p.vx, p.y, p.vy].map(n => String(n).replace('.', ',')).join(';')).join('\r\n') + '\r\n';
   }
-  const api = {columns, MAX_ROWS, number, validate, parse, regression, csv};
+  function powerCurve(points, c, n, x0) {
+    if (![c, n, x0].every(Number.isFinite) || x0 <= 0) throw new Error('Informe C e n finitos e uma referência X₀ positiva.');
+    if (points.some(p => p.x <= 0)) throw new Error('A curva de potência exige valores X positivos.');
+    const min = points.reduce((m, p) => Math.min(m, p.x), Infinity);
+    const max = points.reduce((m, p) => Math.max(m, p.x), -Infinity);
+    if (!(max > min)) throw new Error('A curva precisa de pelo menos dois valores X distintos.');
+    const x = Array.from({length: 301}, (_, i) => min + (max - min) * i / 300);
+    const y = x.map(value => c * (value / x0) ** n);
+    if (![...x, ...y].every(Number.isFinite)) throw new Error('Os parâmetros da curva excedem o intervalo numérico.');
+    return {x, y, c, n, x0};
+  }
+  const api = {columns, MAX_ROWS, number, validate, parse, regression, csv, powerCurve};
   root.LabData = api;
   if (typeof module !== 'undefined') module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

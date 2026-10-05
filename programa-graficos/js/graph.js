@@ -17,6 +17,11 @@
       const max = points.reduce((m, p) => Math.max(m, p.x), -Infinity);
       traces.push({x: [min, max], y: [fit.predict(min), fit.predict(max)], type: 'scatter', mode: 'lines', name: 'Ajuste linear', line: {color: '#c77948', width: 2}, hoverinfo: 'skip'});
     }
+    if (settings.curve) {
+      traces.push({x: settings.curve.x, y: settings.curve.y, type: 'scatter', mode: 'lines', name: 'Curva reconstruída', line: {color: '#c77948', width: 2}, hoverinfo: 'skip'});
+    }
+    const annotation = fit ? equation(fit) + ` · R²${fit.weighted ? ' ponderado' : ''} = ${format(fit.r2)}`
+      : settings.curve ? `C = ${format(settings.curve.c)} ${settings.yUnit} · n = ${format(settings.curve.n)} · X₀ = ${format(settings.curve.x0)} ${settings.xUnit}` : '';
     const axis = {showgrid: true, gridcolor: '#e8ede9', gridwidth: 1, zeroline: false, showline: true, mirror: true, linecolor: '#8a9990', linewidth: 1, ticks: 'outside', tickcolor: '#8a9990', ticklen: 5, automargin: true, exponentformat: 'power', tickfont: {size: 11}, fixedrange: false};
     const layout = {autosize: true, paper_bgcolor: '#fff', plot_bgcolor: '#fff', font: {family: 'Arial, sans-serif', size: 13, color: '#334c40'}, separators: ',.',
       title: {text: escape(settings.title), font: {size: 16}, x: .5, xanchor: 'center', y: .97, yanchor: 'top', yref: 'container', automargin: false},
@@ -25,11 +30,32 @@
       yaxis: {...axis, title: {text: label(settings.yLabel, settings.yUnit), standoff: 16}},
       showlegend: true, legend: {orientation: 'h', x: .5, xanchor: 'center', y: .01, yref: 'container', yanchor: 'bottom', font: {size: 11}, itemclick: false, itemdoubleclick: false},
       hovermode: 'closest', dragmode: 'zoom',
-      annotations: fit ? [{text: escape(equation(fit)) + ` · R²${fit.weighted ? ' ponderado' : ''} = ${format(fit.r2)}`, xref: 'paper', yref: 'paper', x: .5, y: 1.04, xanchor: 'center', yanchor: 'bottom', showarrow: false, font: {size: 11, color: '#8f512e'}}] : []};
+      annotations: annotation ? [{text: escape(annotation), xref: 'paper', yref: 'paper', x: .5, y: 1.04, xanchor: 'center', yanchor: 'bottom', showarrow: false, font: {size: 11, color: '#8f512e'}}] : []};
     await Plotly.react(element, traces, layout, {responsive: true, editable: false, scrollZoom: true, displayModeBar: false, displaylogo: false, doubleClick: 'reset', showTips: false});
   }
   async function exportImage(element, type) {
-    await Plotly.downloadImage(element, {format: type, filename: 'grafico-experimental', width: 1200, height: 800, scale: type === 'png' ? 3 : 1});
+    // Render a separate export layout: readable at a 16 cm report width,
+    // while preserving the current viewport and leaving the on-screen plot intact.
+    const target = document.createElement('div');
+    target.style.cssText = 'position:fixed;left:-20000px;width:1200px;height:800px';
+    document.body.appendChild(target);
+    try {
+      const layout = JSON.parse(JSON.stringify(element.layout));
+      layout.width = 1200; layout.height = 800; layout.autosize = false;
+      layout.font.size = 24; layout.title.font.size = 28;
+      layout.margin = {l: 125, r: 50, t: 140, b: 145};
+      for (const name of ['xaxis', 'yaxis']) {
+        layout[name].range = [...element._fullLayout[name].range];
+        layout[name].autorange = false; layout[name].tickfont = {size: 22};
+        layout[name].title.font = {size: 24};
+      }
+      layout.legend.font.size = 22;
+      layout.annotations.forEach(a => { a.font.size = 22; });
+      const data = JSON.parse(JSON.stringify(element.data));
+      data.forEach(t => { if (t.marker) t.marker.size = 10; for (const key of ['error_x','error_y']) if (t[key]) {t[key].width = 5;t[key].thickness = 1.8;} });
+      await Plotly.newPlot(target, data, layout, {staticPlot: true});
+      await Plotly.downloadImage(target, {format: type, filename: 'grafico-experimental', width: 1200, height: 800, scale: type === 'png' ? 3 : 1});
+    } finally { Plotly.purge(target); target.remove(); }
   }
   window.LabGraph = {draw, exportImage, format, equation};
 })();

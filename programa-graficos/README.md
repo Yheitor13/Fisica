@@ -1,5 +1,7 @@
 # GráficoLab — gráficos para Física Experimental
 
+**Versão 1.1 — 05/10/2026.** Desenvolvido para a elaboração dos gráficos do trabalho 02 de Física Geral Experimental I.
+
 **[Abrir o programa](https://yheitor13.github.io/Fisica/)**
 
 Aplicativo gratuito para representar medidas experimentais com barras de incerteza horizontais e verticais, ajustar uma reta opcional e exportar figuras para relatórios. HTML, CSS e JavaScript; todo o processamento ocorre no navegador. Não exige cadastro, instalação, banco de dados ou servidor de processamento.
@@ -87,3 +89,18 @@ programa-graficos/
 ```
 
 Plotly.js basic **3.6.0**, distribuído localmente sob licença MIT. Origem: [bundle oficial](https://cdn.plot.ly/plotly-basic-3.6.0.min.js). Referências da implementação: [barras de erro](https://plotly.com/javascript/error-bars/), [configuração de interação](https://plotly.com/javascript/configuration-options/) e [exportação de imagens](https://plotly.com/javascript/static-image-export/).
+
+
+## Reproduzir os três gráficos do relatório 02
+
+Selecione o tipo em **Gráfico do exemplo EX02** e clique em **Exemplo EX02** para carregar:
+
+1. **Dados antes da linearização:** X = tempo médio (s), Y = distância (cm), vX = incerteza do tempo médio e vY = 1 cm. Apenas pontos e barras.
+2. **Dados linearizados:** X = ln(t̄/1 s), Y = ln(x/1 cm), ambos adimensionais. Ative a regressão e selecione pesos 1/vY²; atualize o gráfico.
+3. **Curva reconstruída na escala original:** mesmos dados do primeiro gráfico, com C = 69,93083066019229 cm, n = 1,0491426034754439 e X₀ = 1 s. A curva Y = C(X/X₀)ⁿ é desenhada somente no intervalo medido. Não é uma segunda regressão nem uma transformação automática da tabela.
+
+Na opção **Curva de potência com parâmetros informados**, também é possível inserir C, n e X₀ de outra análise. C usa a unidade de Y, X₀ usa a unidade de X, e n é adimensional. Exigem-se X e X₀ positivos e pelo menos dois X distintos. A reta e a curva são opções mutuamente exclusivas. O traçado usa 301 posições, sem alterar as medições. A anotação da curva mostra C, n e X₀, com as unidades informadas nos eixos; X e Y na fórmula são as coordenadas horizontal e vertical.
+
+Os gráficos do relatório foram exportados pela interface em PNG e SVG. As versões PDF foram obtidas a partir dos mesmos SVGs, sem modificar os dados ou os elementos das figuras. A exportação usa fontes ampliadas para leitura ao inserir uma figura com largura de 16 cm no relatório. O CSV de dados originais está em `exemplos/dados-originais-ex02.csv`.
+
+A reprodução gráfica não recalcula as incertezas dos coeficientes, qui-quadrado ou propagação: esses resultados continuam documentados no relatório. Fotografias, equações e tabelas do relatório são independentes do aplicativo.

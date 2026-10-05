@@ -61,8 +61,10 @@
     exportButtons.forEach(b => b.disabled = true);
     try {
       const points = readRows();
+      if ($('fit').checked && $('curve').checked) throw new Error('Escolha a reta de regressão ou a curva informada, uma de cada vez.');
+      const curve = $('curve').checked ? LabData.powerCurve(points, LabData.number($('curve-c').value, 'da curva', 'C'), LabData.number($('curve-n').value, 'da curva', 'n'), LabData.number($('curve-x0').value, 'da curva', 'X₀')) : null;
       const fit = $('fit').checked ? LabData.regression(points, $('method').value) : null;
-      await LabGraph.draw(plot, points, {title: $('title').value, xLabel: $('x-label').value, xUnit: $('x-unit').value, yLabel: $('y-label').value, yUnit: $('y-unit').value}, fit);
+      await LabGraph.draw(plot, points, {title: $('title').value, xLabel: $('x-label').value, xUnit: $('x-unit').value, yLabel: $('y-label').value, yUnit: $('y-unit').value, curve}, fit);
       $('fit-results').hidden = !fit;
       if (fit) {
         $('equation').textContent = LabGraph.equation(fit);
@@ -75,18 +77,29 @@
       $('zoom-mode').setAttribute('aria-pressed', 'true'); $('pan-mode').setAttribute('aria-pressed', 'false');
       dirty = false;
       $('plot-state').textContent = `${points.length} pontos${isExample ? ' · EX02' : ''}`;
-      status(`${points.length} pontos representados. ${fit ? 'Ajuste calculado.' : 'Regressão desativada.'}`);
+      status(`${points.length} pontos representados. ${fit ? 'Ajuste calculado.' : curve ? 'Curva desenhada com os parâmetros informados; sem novo ajuste.' : 'Regressão desativada.'}`);
       exportButtons.forEach(b => b.disabled = false);
     } catch (error) { dirty = true; $('plot-state').textContent = 'Revise os dados'; status(error.message, 'error'); }
     finally { busy = false; $('generate').disabled = false; }
   }
   function replaceData(matrix) { setRows(matrix); changedData(); }
   function loadExample() {
-    setRows(window.EX02_DATA);
+    const view = $('example-view').value;
+    setRows(view === 'linear' ? window.EX02_DATA : window.EX02_ORIGINAL);
     isExample = true; $('example-note').hidden = false;
     $('title').value = 'Linearização da relação distância–tempo';
     $('x-label').value = 'ln(t̄ / 1 s)'; $('y-label').value = 'ln(x / 1 cm)';
     $('x-unit').value = ''; $('y-unit').value = '';
+    if (view !== 'linear') {
+      $('title').value = view === 'curve' ? 'Lei de potência na escala original' : 'Dados antes da linearização';
+      $('x-label').value = 'Tempo médio t̄'; $('x-unit').value = 's';
+      $('y-label').value = 'Distância x'; $('y-unit').value = 'cm';
+      $('example-note').textContent = 'EX02 — prática de 29/09/2026. Tempos médios em segundos; distâncias em centímetros. vX = σt e vY = 1 cm. A curva usa C e n obtidos no ajuste logarítmico ponderado; não é um novo ajuste.';
+    } else {
+      $('example-note').textContent = 'EX02 — prática de 29/09/2026. X = ln(t̄/1 s), Y = ln(x/1 cm), ambos adimensionais; vX e vY já propagados. Consulte exemplos/README.md para a origem e o método.';
+    }
+    $('curve').checked = view === 'curve';
+    $('curve-c').value = window.EX02_CURVE.c; $('curve-n').value = window.EX02_CURVE.n; $('curve-x0').value = 1;
     $('fit').checked = false; $('method').value = 'ordinary'; methodHelp(); markDirty(); generate();
   }
   $('generate').addEventListener('click', generate);
@@ -95,6 +108,7 @@
   $('clear').addEventListener('click', () => { replaceData([['', '', '', '']]); });
   $('example').addEventListener('click', loadExample);
   ['title', 'x-label', 'x-unit', 'y-label', 'y-unit'].forEach(id => $(id).addEventListener('input', markDirty));
+  ['curve', 'curve-c', 'curve-n', 'curve-x0'].forEach(id => $(id).addEventListener('input', markDirty));
   ['fit', 'method'].forEach(id => $(id).addEventListener('change', () => { methodHelp(); markDirty(); }));
   $('import').addEventListener('click', () => $('file').click());
   $('file').addEventListener('change', async () => {

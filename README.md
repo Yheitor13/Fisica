@@ -20,3 +20,5 @@ Atualizar este índice e o GitHub ao concluir etapas relevantes, após conferir 
 **[Abrir o GráficoLab no navegador](https://yheitor13.github.io/Fisica/)** · [Código e instruções](programa-graficos/)
 
 Programa gratuito para inserir X, vX, Y e vY, representar barras de incerteza nos dois eixos, ajustar uma reta opcional e exportar PNG em alta resolução ou SVG. Aceita colagem do Excel e CSV. Inclui os pontos previamente linearizados do EX02 como exemplo. Também funciona localmente: abra `programa-graficos/index.html`, mantendo suas subpastas.
+
+Os três gráficos do relatório 02 foram produzidos no GráficoLab 1.1, citado na metodologia, nas fontes das figuras e nas referências como programa desenvolvido para este trabalho.

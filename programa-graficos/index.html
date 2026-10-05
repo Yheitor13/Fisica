@@ -23,6 +23,7 @@
           <div class="section-heading"><h2><span class="step">01</span> Dados experimentais</h2><span id="row-count" class="count"></span></div>
           <p class="help"><strong>vX e vY são incertezas absolutas</strong> de X e Y, nas mesmas unidades. Não representam velocidades.</p>
           <div class="actions"><button id="import" type="button">Importar CSV</button><button id="example" type="button">Exemplo EX02</button><button id="clear" class="quiet" type="button">Limpar</button></div>
+          <label for="example-view">Gráfico do exemplo EX02</label><select id="example-view"><option value="linear">Dados linearizados</option><option value="original">Dados antes da linearização</option><option value="curve">Curva reconstruída na escala original</option></select>
           <input id="file" type="file" accept=".csv,.tsv,.txt,text/csv" hidden>
           <div class="table-wrap"><table><caption class="sr-only">Digite os valores ou cole quatro colunas de uma planilha: X, vX, Y, vY.</caption><thead><tr><th scope="col">#</th><th scope="col">X</th><th scope="col">vX <span>±</span></th><th scope="col">Y</th><th scope="col">vY <span>±</span></th><th scope="col"><span class="sr-only">Excluir linha</span></th></tr></thead><tbody id="rows"></tbody></table></div>
           <div class="table-footer"><button id="add-row" class="quiet" type="button">+ Adicionar linha</button><button id="save-data" class="quiet" type="button">Salvar CSV ↓</button></div>
@@ -40,6 +41,7 @@
           <label class="check"><input id="fit" type="checkbox"> Exibir reta de regressão</label>
           <label for="method">Método do ajuste</label><select id="method" disabled><option value="ordinary">Mínimos quadrados — sem ponderação</option><option value="weighted">Mínimos quadrados — pesos 1/vY²</option></select>
           <p id="method-help" class="help small">Sem ponderação: todos os pontos têm o mesmo peso. vX e vY aparecem nas barras de incerteza.</p>
+          <details><summary>Curva de potência com parâmetros informados</summary><label class="check"><input id="curve" type="checkbox"> Exibir Y = C(X/X₀)ⁿ</label><div class="field-grid"><div><label for="curve-c">C (unidade de Y)</label><input id="curve-c" value="1" inputmode="decimal"></div><div><label for="curve-n">Expoente n</label><input id="curve-n" value="1" inputmode="decimal"></div></div><label for="curve-x0">X₀ (unidade de X)</label><input id="curve-x0" value="1" inputmode="decimal"><p class="help small">Coeficientes já calculados na análise. A curva é desenhada no intervalo dos dados, para X e X₀ positivos. Não há novo ajuste nem linearização automática. Desative a reta para usar esta opção.</p></details>
           <button id="generate" class="primary" type="button">Gerar / atualizar gráfico <span aria-hidden="true">↗</span></button>
           <p id="status" role="status" aria-live="polite"></p>
         </section>
