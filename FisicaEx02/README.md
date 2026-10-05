@@ -41,3 +41,5 @@ A transformação usa X = ln(t̄/1 s) e Y = ln(x/1 cm), com σX = σt/t̄ e σY 
 O trabalho 01 serviu de referência de estrutura, estilo e tratamento de incertezas. Nenhuma medida ou resultado físico desse experimento foi transportado para o trabalho 02. As referências comuns pertinentes foram mantidas, e o material específico de linearização foi identificado pelo título interno: “Aula 2 – Laboratório de Física 1”, de Lucas Soares Sousa, 19 slides, sem data identificada, disponibilizado como Aula3-PropagacaoLinearizacao.pdf.
 
 O PDF e o Word foram revisados em 05/10/2026: fotografias incorporadas, identificação dos participantes corrigida, sumário e listas atualizados, tabelas e equações preservadas e 19 páginas conferidas visualmente. Os documentos auxiliares de cálculo não substituem o relatório final.
+
+A antiga pasta `trab02` no histórico do GitHub foi consolidada nesta `FisicaEx02`. Sua planilha anterior foi arquivada em [tmp/historico/medidas_trab02.xlsx](tmp/historico/medidas_trab02.xlsx); a fotografia original idêntica já está em `refs/`. A nota interna da planilha atual aponta para o novo local da fotografia.

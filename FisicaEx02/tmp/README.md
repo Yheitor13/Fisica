@@ -12,3 +12,5 @@ O relatório para leitura e entrega está em [../Relatorio_Final.pdf](../Relator
 - [graficos/](historico/graficos/): quatro arquivos anteriores (antes/depois da linearização, em PDF e PNG), preservados como registro das etapas iniciais.
 
 Esses materiais não substituem o PDF final. A organização preserva todos os arquivos anteriores sem modificar as medições, os cálculos ou o conteúdo dos documentos.
+
+- [medidas_trab02.xlsx](historico/medidas_trab02.xlsx): versão anterior da planilha, retirada da pasta histórica `trab02`. As nove linhas de medidas coincidem com a planilha atual; as anotações antigas foram preservadas para consulta.
