@@ -14,3 +14,9 @@ As referências comuns da disciplina ficam em `referencias_gerais/`. Cada trabal
 Um experimento pode fornecer métodos, calibrações ou resultados para outro. Ao reutilizar algo, identificar o trabalho e arquivo de origem, a grandeza, unidade, incerteza e condições de validade. O relatório do trabalho 02 segue a apresentação e o tratamento de incertezas do primeiro, com seus próprios dados, modelo e material de linearização.
 
 Atualizar este índice e o GitHub ao concluir etapas relevantes, após conferir os arquivos e excluir temporários do Office. Não publicar cálculos provisórios como resultados finais.
+
+## Programa de gráficos
+
+**[Abrir o GráficoLab no navegador](https://yheitor13.github.io/Fisica/)** · [Código e instruções](programa-graficos/)
+
+Programa gratuito para inserir X, vX, Y e vY, representar barras de incerteza nos dois eixos, ajustar uma reta opcional e exportar PNG em alta resolução ou SVG. Aceita colagem do Excel e CSV. Inclui os pontos previamente linearizados do EX02 como exemplo. Também funciona localmente: abra `programa-graficos/index.html`, mantendo suas subpastas.

@@ -43,3 +43,7 @@ O trabalho 01 serviu de referência de estrutura, estilo e tratamento de incerte
 O PDF e o Word foram revisados em 05/10/2026: fotografias incorporadas, identificação dos participantes corrigida, sumário e listas atualizados, tabelas e equações preservadas e 19 páginas conferidas visualmente. Os documentos auxiliares de cálculo não substituem o relatório final.
 
 A antiga pasta `trab02` no histórico do GitHub foi consolidada nesta `FisicaEx02`. Sua planilha anterior foi arquivada em [tmp/historico/medidas_trab02.xlsx](tmp/historico/medidas_trab02.xlsx); a fotografia original idêntica já está em `refs/`. A nota interna da planilha atual aponta para o novo local da fotografia.
+
+## Gerar novos gráficos
+
+Use o **[GráficoLab](https://yheitor13.github.io/Fisica/)**, também disponível em [programa-graficos/](../programa-graficos/). O botão Exemplo EX02 carrega os nove pontos já linearizados deste trabalho, com vX e vY propagados. Para reproduzir a reta do relatório, marque a regressão, escolha **pesos 1/vY²** e atualize o gráfico. O programa não faz a linearização automaticamente. Permite exportar PNG (3600 × 2400 pixels) e SVG vetorial.
