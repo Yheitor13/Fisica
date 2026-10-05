@@ -1,6 +1,6 @@
 # Física Experimental 02 — Linearização
 
-**Etapa atual:** relatório concluído em 05/10/2026, no padrão do trabalho 01, com dados conferidos, gráficos e revisão visual das 17 páginas. As fotografias do experimento serão incluídas posteriormente, a pedido do usuário.
+**Etapa atual:** relatório concluído em 05/10/2026, no padrão do trabalho 01, com dados conferidos, gráficos, quatro fotografias e revisão visual das 19 páginas. Participantes atualizados conforme solicitação do usuário.
 
 ## Arquivos
 
@@ -23,7 +23,7 @@ Consultar o [primeiro trabalho](../FisicaEx01/) como base de tratamento de medid
 
 ## Próxima etapa
 
-Incluir as fotografias quando o usuário as enviar e solicitar sua inserção; atualizar lista de figuras, sumário e paginação nessa ocasião.
+Relatório atualizado com as fotografias, identificação dos três participantes, lista de figuras, sumário e paginação conferidos.
 
 ## Arquivos de cálculo - 29/09/2026
 
@@ -35,8 +35,8 @@ Aplicada a regressão do slide 16 com pesos 1/σY². Hipótese: 0,0001 s é a co
 
 ## Relatório e gráficos — 05/10/2026
 
-- [Relatório final em PDF](Relatorio_Final.pdf) — 17 páginas, com quatro tabelas e três gráficos.
-- [Relatório editável em Word](Relatorio_Final.docx) — capa, participantes, matrículas, turma, docente, estilos e margens preservados do trabalho 01; conteúdo adaptado ao segundo experimento.
+- [Relatório final em PDF](Relatorio_Final.pdf) — 19 páginas, com quatro tabelas, três gráficos e quatro fotografias organizadas em duas figuras.
+- [Relatório editável em Word](Relatorio_Final.docx) — capa, turma, docente, estilos e margens no padrão do trabalho 01; conteúdo do segundo experimento, com três participantes e suas matrículas atualizados.
 - [Dados antes da linearização](graficos/01_Dados_Antes_da_Linearizacao.pdf).
 - [Linearização e reta ajustada](graficos/02_Linearizacao_e_Reta_Ajustada.pdf).
 - [Curva ajustada na escala original](graficos/03_Curva_Ajustada_Escala_Original.pdf).
@@ -48,3 +48,16 @@ O usuário confirmou a prática em **29/09/2026** e o uso de um sistema de redu�
 O primeiro relatório foi utilizado como referência de apresentação, participantes e escrita. Nenhuma medida ou resultado físico do trabalho 01 foi transportado para o trabalho 02. Referências comuns pertinentes foram mantidas; a referência específica de Sousa foi adaptada ao material de linearização (arquivo Aula3, título interno “Aula 2 – Laboratório de Física 1”, 19 slides, sem data identificada).
 
 Validação: releitura da planilha salva, regressão recalculada e conferida por solução independente de mínimos quadrados, preservação dos dados corrigidos, conferência dos nomes e matrículas, margens e estilos, equações editáveis, listas/sumário e revisão visual de todas as páginas do PDF exportado pelo Word.
+
+
+## Inclusão das fotografias e atualização dos participantes — 05/10/2026
+
+As quatro fotografias de [Fotos Experimento.zip](Fotos%20Experimento.zip) foram incluídas na seção 3.1 Registros fotográficos. A Figura 1 apresenta o trilho e a fonte de ar; a Figura 2 apresenta os sensores e o painel de medição. Os gráficos passaram a Figuras 3, 4 e 5. Fontes, referência do acervo, lista de figuras, sumário e paginação foram atualizados.
+
+Participantes atuais, com matrículas na ordem confirmada pelo usuário:
+
+- Heitor Yochida de Ávila — 12612ETE002.
+- Sofia Skolimoski — 12621ETE001.
+- Tiago de Almeida Raile — 12621EAU003.
+
+Arthur e Enzo e suas duas matrículas foram removidos do relatório e das propriedades dos arquivos. Medições, tabelas, equações e resultados foram preservados. Fotografias incorporadas sem cortes ou alterações de conteúdo. PDF final com 19 páginas, conferido visualmente.
