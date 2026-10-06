@@ -38,6 +38,8 @@ A transformação usa X = ln(t̄/1 s) e Y = ln(x/1 cm), com σX = σt/t̄ e σY 
 
 ## Referência de apresentação e revisão
 
+Revisão de 06/10/2026: metodologia conferida com os slides 2, 9, 12, 13 e 16 da aula de Sousa; análise de qui-quadrado identificada como complementar, com base na apostila. A metodologia, as fontes das três figuras e a bibliografia identificam o software próprio como ferramenta de criação de gráficos. Marcações de revisão removidas, 19 páginas conferidas e medições, equações e resultados preservados.
+
 O trabalho 01 serviu de referência de estrutura, estilo e tratamento de incertezas. Nenhuma medida ou resultado físico desse experimento foi transportado para o trabalho 02. As referências comuns pertinentes foram mantidas, e o material específico de linearização foi identificado pelo título interno: “Aula 2 – Laboratório de Física 1”, de Lucas Soares Sousa, 19 slides, sem data identificada, disponibilizado como Aula3-PropagacaoLinearizacao.pdf.
 
 O PDF e o Word foram revisados em 05/10/2026: fotografias incorporadas, identificação dos participantes corrigida, sumário e listas atualizados, tabelas e equações preservadas e 19 páginas conferidas visualmente. Os documentos auxiliares de cálculo não substituem o relatório final.
