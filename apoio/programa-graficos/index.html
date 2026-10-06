@@ -4,8 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Gráficos experimentais com barras de incerteza, regressão linear e exportação para relatórios. Gratuito, direto no navegador.">
-  <title>GráficoLab · Física Experimental</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <title>Calculadora de gráficos</title>
   <link rel="stylesheet" href="css/style.css">
   <script defer src="vendor/plotly-basic-3.6.0.min.js"></script>
   <script defer src="js/data.js"></script>
@@ -14,9 +13,8 @@
   <script defer src="js/script.js"></script>
 </head>
 <body>
-  <header class="topbar"><a class="brand" href="./"><span class="brand-icon" aria-hidden="true">↗</span> Gráfico<span>Lab</span></a><span class="top-note">FÍSICA EXPERIMENTAL</span><a class="portal-link" href="../">← Trabalhos</a><a class="source-link" href="https://github.com/Yheitor13/Fisica/tree/main/apoio/programa-graficos" target="_blank" rel="noopener">Código e guia ↗</a></header>
+  <header class="topbar"><h1>Calculadora de gráficos</h1></header>
   <main>
-    <div class="intro"><div><p class="eyebrow">DO EXPERIMENTO AO RELATÓRIO</p><h1>Seus dados, com precisão.</h1><p>Monte o gráfico, visualize as incertezas e exporte para o seu trabalho.</p></div><span class="local-badge"><span aria-hidden="true">●</span> Tudo no seu navegador</span></div>
     <div class="workspace">
       <aside class="controls" aria-label="Dados e configuração">
         <section class="panel">
@@ -32,8 +30,8 @@
         </section>
         <section class="panel">
           <h2><span class="step">02</span> Apresentação</h2>
-          <label for="title">Título do gráfico</label><input id="title" maxlength="100" value="Linearização da relação distância–tempo">
-          <div class="field-grid"><div><label for="x-label">Eixo X</label><input id="x-label" maxlength="60" value="ln(t̄ / 1 s)"></div><div><label for="x-unit">Unidade</label><input id="x-unit" maxlength="24" placeholder="opcional"></div><div><label for="y-label">Eixo Y</label><input id="y-label" maxlength="60" value="ln(x / 1 cm)"></div><div><label for="y-unit">Unidade</label><input id="y-unit" maxlength="24" placeholder="opcional"></div></div>
+          <label for="title">Título do gráfico</label><input id="title" maxlength="100" value="">
+          <div class="field-grid"><div><label for="x-label">Eixo X</label><input id="x-label" maxlength="60" value=""></div><div><label for="x-unit">Unidade</label><input id="x-unit" maxlength="24" placeholder="opcional"></div><div><label for="y-label">Eixo Y</label><input id="y-label" maxlength="60" value=""></div><div><label for="y-unit">Unidade</label><input id="y-unit" maxlength="24" placeholder="opcional"></div></div>
           <p class="help small">Insira os valores já calculados. O programa não transforma nem lineariza seus dados automaticamente.</p>
         </section>
         <section class="panel">
@@ -41,26 +39,21 @@
           <label class="check"><input id="fit" type="checkbox"> Exibir reta de regressão</label>
           <label for="method">Método do ajuste</label><select id="method" disabled><option value="ordinary">Mínimos quadrados — sem ponderação</option><option value="weighted">Mínimos quadrados — pesos 1/vY²</option></select>
           <p id="method-help" class="help small">Sem ponderação: todos os pontos têm o mesmo peso. vX e vY aparecem nas barras de incerteza.</p>
-          <details><summary>Curva de potência com parâmetros informados</summary><label class="check"><input id="curve" type="checkbox"> Exibir Y = C(X/X₀)ⁿ</label><div class="field-grid"><div><label for="curve-c">C (unidade de Y)</label><input id="curve-c" value="1" inputmode="decimal"></div><div><label for="curve-n">Expoente n</label><input id="curve-n" value="1" inputmode="decimal"></div></div><label for="curve-x0">X₀ (unidade de X)</label><input id="curve-x0" value="1" inputmode="decimal"><p class="help small">Coeficientes já calculados na análise. A curva é desenhada no intervalo dos dados, para X e X₀ positivos. Não há novo ajuste nem linearização automática. Desative a reta para usar esta opção.</p></details>
+          <details><summary>Curva de potência com parâmetros informados</summary><label class="check"><input id="curve" type="checkbox"> Exibir Y = C(X/X₀)ⁿ</label><div class="field-grid"><div><label for="curve-c">C (unidade de Y)</label><input id="curve-c" value="" inputmode="decimal"></div><div><label for="curve-n">Expoente n</label><input id="curve-n" value="" inputmode="decimal"></div></div><label for="curve-x0">X₀ (unidade de X)</label><input id="curve-x0" value="" inputmode="decimal"><p class="help small">Coeficientes já calculados na análise. A curva é desenhada no intervalo dos dados, para X e X₀ positivos. Não há novo ajuste nem linearização automática. Desative a reta para usar esta opção.</p></details>
           <button id="generate" class="primary" type="button">Gerar / atualizar gráfico <span aria-hidden="true">↗</span></button>
           <p id="status" role="status" aria-live="polite"></p>
         </section>
       </aside>
       <div class="output">
         <section class="plot-panel" aria-label="Gráfico experimental">
-          <div class="plot-heading"><div><span class="eyebrow">ÁREA DO GRÁFICO</span><h2>Visualização científica</h2></div><span id="plot-state" class="tag">Dados do EX02</span></div>
+          <div class="plot-heading"><div><span class="eyebrow">ÁREA DO GRÁFICO</span><h2>Visualização científica</h2></div><span id="plot-state" class="tag"></span></div>
           <div class="plot-tools" aria-label="Controles de visualização"><button id="zoom-mode" type="button" aria-pressed="true">Ampliar região</button><button id="pan-mode" type="button" aria-pressed="false">Mover visão</button><button id="reset" type="button">Restaurar visão</button></div>
           <div id="plot" role="img" aria-label="Gráfico de dispersão com barras de incerteza nos dois eixos"></div>
-          <div class="plot-caption"><span class="dot" aria-hidden="true"></span> Passe sobre os pontos para consultar X, Y, vX e vY.<br>Use a roda do mouse para zoom. Os dados só mudam na tabela.</div>
-          <div id="fit-results" class="fit-results" hidden><div class="fit-title">RETA AJUSTADA <span id="fit-kind"></span></div><p id="equation" class="equation"></p><dl><div><dt>Coeficiente angular · a</dt><dd id="slope"></dd></div><div><dt>Intercepto · b</dt><dd id="intercept"></dd></div><div><dt id="r2-label">R²</dt><dd id="r2"></dd></div></dl></div>
-          <div class="export-bar"><div><strong>Pronto para o relatório</strong><p>Exporte apenas o gráfico na visão atual.</p></div><div class="actions"><button id="export-svg" type="button" disabled>SVG vetorial ↓</button><button id="export-png" class="dark" type="button" disabled>PNG · alta resolução ↓</button></div></div>
+          <div class="export-bar"><strong>Salvar dados</strong><div class="actions"><button id="export-svg" type="button" disabled>SVG vetorial ↓</button><button id="export-png" class="dark" type="button" disabled>PNG · alta resolução ↓</button></div></div>
         </section>
-        <div class="note"><span aria-hidden="true">i</span><p><strong>Incertezas visíveis, medições preservadas.</strong> As barras representam ±vX e ±vY. Zoom e deslocamento alteram apenas a visualização. Salve seus dados em CSV antes de fechar esta página.</p></div>
-        <p id="example-note" class="provenance">Exemplo: trabalho 02, prática de 29/09/2026. X = ln(t̄/1 s), Y = ln(x/1 cm); ambos adimensionais. As incertezas já foram propagadas. <a href="exemplos/README.md" target="_blank" rel="noopener">Origem e método ↗</a></p>
       </div>
     </div>
   </main>
-  <footer><span>GráficoLab <span class="footer-separator">/</span> Ferramenta para Física Experimental</span><span>Sem cadastro · Sem envio das medições</span></footer>
   <noscript>Ative o JavaScript do navegador para usar o programa.</noscript>
 </body>
 </html>

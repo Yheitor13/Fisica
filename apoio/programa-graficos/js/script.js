@@ -2,7 +2,7 @@
   'use strict';
   const $ = id => document.getElementById(id);
   const body = $('rows'), plot = $('plot');
-  let dirty = false, busy = false, isExample = true;
+  let dirty = false, busy = false, isExample = false;
   const exportButtons = [$('export-png'), $('export-svg')];
   function status(message, kind = '') { $('status').textContent = message; $('status').className = kind; }
   function markDirty() {
@@ -11,7 +11,7 @@
     $('plot-state').textContent = 'Atualização pendente';
     status('Há alterações. Clique em Gerar / atualizar gráfico para aplicá-las.', 'pending');
   }
-  function changedData() { isExample = false; $('example-note').hidden = true; markDirty(); }
+  function changedData() { isExample = false; markDirty(); }
   function refreshCount() {
     $('row-count').textContent = `${body.children.length} linhas`;
     [...body.children].forEach((row, i) => {
@@ -65,15 +65,6 @@
       const curve = $('curve').checked ? LabData.powerCurve(points, LabData.number($('curve-c').value, 'da curva', 'C'), LabData.number($('curve-n').value, 'da curva', 'n'), LabData.number($('curve-x0').value, 'da curva', 'X₀')) : null;
       const fit = $('fit').checked ? LabData.regression(points, $('method').value) : null;
       await LabGraph.draw(plot, points, {title: $('title').value, xLabel: $('x-label').value, xUnit: $('x-unit').value, yLabel: $('y-label').value, yUnit: $('y-unit').value, curve}, fit);
-      $('fit-results').hidden = !fit;
-      if (fit) {
-        $('equation').textContent = LabGraph.equation(fit);
-        $('slope').textContent = LabGraph.format(fit.slope);
-        $('intercept').textContent = LabGraph.format(fit.intercept);
-        $('r2').textContent = LabGraph.format(fit.r2);
-        $('r2-label').textContent = fit.weighted ? 'R² ponderado' : 'R²';
-        $('fit-kind').textContent = fit.weighted ? 'Pesos 1/vY²' : 'Sem ponderação';
-      }
       $('zoom-mode').setAttribute('aria-pressed', 'true'); $('pan-mode').setAttribute('aria-pressed', 'false');
       dirty = false;
       $('plot-state').textContent = `${points.length} pontos${isExample ? ' · EX02' : ''}`;
@@ -86,7 +77,7 @@
   function loadExample() {
     const view = $('example-view').value;
     setRows(view === 'linear' ? window.EX02_DATA : window.EX02_ORIGINAL);
-    isExample = true; $('example-note').hidden = false;
+    isExample = true;
     $('title').value = 'Linearização da relação distância–tempo';
     $('x-label').value = 'ln(t̄ / 1 s)'; $('y-label').value = 'ln(x / 1 cm)';
     $('x-unit').value = ''; $('y-unit').value = '';
@@ -94,9 +85,6 @@
       $('title').value = view === 'curve' ? 'Lei de potência na escala original' : 'Dados antes da linearização';
       $('x-label').value = 'Tempo médio t̄'; $('x-unit').value = 's';
       $('y-label').value = 'Distância x'; $('y-unit').value = 'cm';
-      $('example-note').textContent = 'EX02 — prática de 29/09/2026. Tempos médios em segundos; distâncias em centímetros. vX = σt e vY = 1 cm. A curva usa C e n obtidos no ajuste logarítmico ponderado; não é um novo ajuste.';
-    } else {
-      $('example-note').textContent = 'EX02 — prática de 29/09/2026. X = ln(t̄/1 s), Y = ln(x/1 cm), ambos adimensionais; vX e vY já propagados. Consulte exemplos/README.md para a origem e o método.';
     }
     $('curve').checked = view === 'curve';
     $('curve-c').value = window.EX02_CURVE.c; $('curve-n').value = window.EX02_CURVE.n; $('curve-x0').value = 1;
@@ -158,5 +146,6 @@
     catch (e) { status('Não foi possível exportar: ' + e.message, 'error'); }
     finally { busy = false; exportButtons.forEach(b => b.disabled = dirty); }
   }));
-  loadExample();
+  setRows([['', '', '', '']]);
+  methodHelp();
 })();

@@ -1,6 +1,6 @@
-# GráficoLab — gráficos para Física Experimental
+# Calculadora de gráficos
 
-**Versão 1.1 — 05/10/2026.** Desenvolvido para a elaboração dos gráficos do trabalho 02 de Física Geral Experimental I.
+**Versão 1.2 — 05/10/2026.** Interface simplificada; anteriormente denominado GráficoLab. Desenvolvido para a elaboração dos gráficos do trabalho 02 de Física Geral Experimental I.
 
 **[Abrir o programa](https://yheitor13.github.io/Fisica/graficolab/)**
 
@@ -15,7 +15,7 @@ Aplicativo gratuito para representar medidas experimentais com barras de incerte
 5. Use **Ampliar região**, **Mover visão**, a roda do mouse ou **Restaurar visão**. Passe o cursor nos pontos para consultar as quatro grandezas.
 6. Exporte em **PNG** (3600 × 2400 pixels) ou **SVG** vetorial. A exportação preserva a região visível e inclui apenas a figura: título, eixos, legenda, pontos, barras e ajuste quando ativo. Restaure a visão antes de exportar se quiser todos os pontos.
 
-O exemplo EX02 já aparece ao abrir; o ajuste inicia desligado. Para reproduzir a reta do relatório, ative a regressão e selecione **pesos 1/vY²**. Para iniciar outro conjunto, use **Limpar** e ajuste os rótulos. Os botões Limpar, Exemplo, importação e bloco de colagem substituem a tabela. A colagem diretamente numa célula substitui quatro colunas a partir da linha selecionada, preservando as linhas seguintes que não forem abrangidas. Para substituir todo o conjunto, prefira o bloco de colagem ou a importação.
+A tabela, o gráfico e os campos de apresentação iniciam vazios; o ajuste inicia desligado. Para carregar um exemplo, escolha a opção desejada e clique em **Exemplo EX02**. Para reproduzir a reta do relatório, ative a regressão e selecione **pesos 1/vY²**. Para iniciar outro conjunto, use **Limpar** e ajuste os rótulos. Os botões Limpar, Exemplo, importação e bloco de colagem substituem a tabela. A colagem diretamente numa célula substitui quatro colunas a partir da linha selecionada, preservando as linhas seguintes que não forem abrangidas. Para substituir todo o conjunto, prefira o bloco de colagem ou a importação.
 
 **Salve o CSV antes de fechar a página.** Não há armazenamento automático: os dados permanecem apenas na memória desta aba. O CSV preserva os quatro valores numéricos, mas não as configurações de título, unidades ou ajuste.
 
