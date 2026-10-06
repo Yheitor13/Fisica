@@ -2,7 +2,7 @@
 
 **Versão 1.2 — 05/10/2026.** Interface simplificada; anteriormente denominado GráficoLab. Desenvolvido para a elaboração dos gráficos do trabalho 02 de Física Geral Experimental I.
 
-**[Abrir o programa](https://yheitor13.github.io/Fisica/graficolab/)**
+**[Abrir o programa](https://yheitor13.github.io/Fisica/calculadora-de-grafico/)**
 
 Aplicativo gratuito para representar medidas experimentais com barras de incerteza horizontais e verticais, ajustar uma reta opcional e exportar figuras para relatórios. HTML, CSS e JavaScript; todo o processamento ocorre no navegador. Não exige cadastro, instalação, banco de dados ou servidor de processamento.
 
@@ -64,11 +64,11 @@ Opcionalmente, para desenvolvimento, execute `python -m http.server 8080 --direc
 
 ## Publicar no GitHub Pages
 
-O fluxo [`.github/workflows/pages.yml`](../../.github/workflows/pages.yml) testa os cálculos e publica o portal na página inicial, o programa em `graficolab/` e os documentos finais de ambos os trabalhos.
+O fluxo [`.github/workflows/pages.yml`](../../.github/workflows/pages.yml) testa os cálculos e publica o portal na página inicial, o programa em `calculadora-de-grafico/` e os documentos finais de ambos os trabalhos.
 
 1. Em **Settings → Pages → Build and deployment**, selecione **GitHub Actions**.
 2. Envie as alterações para `main` ou execute o fluxo **Publicar portal de Física** em **Actions → Run workflow**.
-3. Aguarde o trabalho de publicação terminar. Neste repositório, o endereço é `https://yheitor13.github.io/Fisica/graficolab/`.
+3. Aguarde o trabalho de publicação terminar. Neste repositório, o endereço é `https://yheitor13.github.io/Fisica/calculadora-de-grafico/`.
 
 Em um fork, habilite Actions e Pages e atualize os links deste README e da interface para a sua conta. Não são necessários secrets nem serviços pagos. Consulte a [documentação oficial do GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 

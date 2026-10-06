@@ -46,7 +46,7 @@ A antiga pasta `trab02` no histórico do GitHub foi consolidada nesta `FisicaEx0
 
 ## Gerar novos gráficos
 
-Use o **[GráficoLab](https://yheitor13.github.io/Fisica/graficolab/)**, também disponível em [programa-graficos/](../apoio/programa-graficos/). O botão Exemplo EX02 carrega os nove pontos já linearizados deste trabalho, com vX e vY propagados. Para reproduzir a reta do relatório, marque a regressão, escolha **pesos 1/vY²** e atualize o gráfico. O programa não faz a linearização automaticamente. Permite exportar PNG (3600 × 2400 pixels) e SVG vetorial.
+Use o **[GráficoLab](https://yheitor13.github.io/Fisica/calculadora-de-grafico/)**, também disponível em [programa-graficos/](../apoio/programa-graficos/). O botão Exemplo EX02 carrega os nove pontos já linearizados deste trabalho, com vX e vY propagados. Para reproduzir a reta do relatório, marque a regressão, escolha **pesos 1/vY²** e atualize o gráfico. O programa não faz a linearização automaticamente. Permite exportar PNG (3600 × 2400 pixels) e SVG vetorial.
 
 
 ## Gráficos produzidos no GráficoLab
