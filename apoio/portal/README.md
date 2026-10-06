@@ -1,16 +1,16 @@
 # Portal de Física Experimental
 
-Página simples de acesso aos dois trabalhos, aos materiais de consulta e ao GráficoLab.
+Página simples de acesso aos dois trabalhos, aos materiais de consulta e à Calculadora de gráficos.
 
 - Portal: https://yheitor13.github.io/Fisica/
-- GráficoLab: https://yheitor13.github.io/Fisica/calculadora-de-grafico/
+- Calculadora de gráficos: https://yheitor13.github.io/Fisica/calculadora-de-grafico/
 - Os READMEs e os arquivos completos permanecem disponíveis no GitHub.
 
 O portal é HTML e CSS, sem dependências, cadastro ou processamento remoto. Os relatórios e gráficos PDF abrem diretamente no navegador. Word e planilhas são oferecidos para download. Fotografias e materiais de desenvolvimento são acessíveis pelos links do repositório, sem duplicá-los na publicação.
 
 ## Publicação
 
-O fluxo `.github/workflows/pages.yml` testa o GráficoLab e executa `node apoio/portal/build.cjs`. O construtor monta `.pages/` com o portal, o programa em `calculadora-de-grafico/`, os documentos finais e os PDFs de apoio. Verifica todos os links locais do portal antes de publicar. `.pages/` é apenas uma cópia de publicação e não deve entrar no Git.
+O fluxo `.github/workflows/pages.yml` testa a Calculadora de gráficos e executa `node apoio/portal/build.cjs`. O construtor monta `.pages/` com o portal, o programa em `calculadora-de-grafico/`, os documentos finais e os PDFs de apoio. Verifica todos os links locais do portal antes de publicar. `.pages/` é apenas uma cópia de publicação e não deve entrar no Git.
 
 Para conferir localmente, na raiz do repositório:
 

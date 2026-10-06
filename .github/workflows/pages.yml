@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verificar cálculos do GráficoLab
+      - name: Verificar cálculos da Calculadora de gráficos
         run: node --test apoio/programa-graficos/tests/data.test.cjs
       - name: Montar portal e conferir links
         run: node apoio/portal/build.cjs

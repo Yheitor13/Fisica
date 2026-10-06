@@ -1,6 +1,6 @@
 # Calculadora de gráficos
 
-**Versão 1.2 — 05/10/2026.** Interface simplificada; anteriormente denominado GráficoLab. Desenvolvido para a elaboração dos gráficos do trabalho 02 de Física Geral Experimental I.
+**Versão 1.2 — 05/10/2026.** Interface simplificada. Desenvolvida para a elaboração dos gráficos do trabalho 02 de Física Geral Experimental I.
 
 **[Abrir o programa](https://yheitor13.github.io/Fisica/calculadora-de-grafico/)**
 

@@ -5,7 +5,7 @@
 | [Trabalho 01](FisicaEx01/) | Medidas, volumes e propagação de incertezas |
 | [Trabalho 02](FisicaEx02/) | Linearização |
 
-**Programa de gráficos:** [Abrir o GráficoLab](https://yheitor13.github.io/Fisica/calculadora-de-grafico/)
+**Programa de gráficos:** [Abrir a Calculadora de gráficos](https://yheitor13.github.io/Fisica/calculadora-de-grafico/)
 
 **Site dos trabalhos:** [Abrir e compartilhar o índice de Física](https://yheitor13.github.io/Fisica/)
 
@@ -30,6 +30,6 @@ Cada exercício mantém os documentos finais na raiz, fontes em `refs/` e regist
 
 O EX02 cita o EX01 como base do tratamento anterior à linearização: média, desvio padrão amostral, incerteza da média e combinação em quadratura. A aplicação utiliza os tempos e as incertezas próprias do segundo experimento. Não reutiliza medidas dimensionais, modelos de volume ou incertezas do paquímetro.
 
-Os três gráficos do EX02 foram produzidos no [GráficoLab](apoio/programa-graficos/), desenvolvido para esse trabalho e citado na metodologia e nas referências. O aplicativo permite inserir X, vX, Y e vY, exibir barras de incerteza, ajustar uma reta ou desenhar uma curva com parâmetros informados e exportar figuras. O [portal](apoio/portal/) oferece acesso geral aos dois trabalhos e aos materiais.
+Os três gráficos do EX02 foram produzidos na [Calculadora de gráficos](apoio/programa-graficos/), desenvolvida para esse trabalho e citada na metodologia e nas referências. O aplicativo permite inserir X, vX, Y e vY, exibir barras de incerteza, ajustar uma reta ou desenhar uma curva com parâmetros informados e exportar figuras. O [portal](apoio/portal/) oferece acesso geral aos dois trabalhos e aos materiais.
 
-Os nomes e caminhos internos de EX01 e EX02 foram preservados. A página inicial do GitHub Pages passou a ser o portal; o GráficoLab fica em `/calculadora-de-grafico/`. Atualizações enviadas para `main` publicam automaticamente a versão revisada dos documentos e das páginas.
+Os nomes e caminhos internos de EX01 e EX02 foram preservados. A página inicial do GitHub Pages passou a ser o portal; a Calculadora de gráficos fica em `/calculadora-de-grafico/`. Atualizações enviadas para `main` publicam automaticamente a versão revisada dos documentos e das páginas.

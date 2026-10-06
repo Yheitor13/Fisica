@@ -46,14 +46,14 @@ A antiga pasta `trab02` no histórico do GitHub foi consolidada nesta `FisicaEx0
 
 ## Gerar novos gráficos
 
-Use o **[GráficoLab](https://yheitor13.github.io/Fisica/calculadora-de-grafico/)**, também disponível em [programa-graficos/](../apoio/programa-graficos/). O botão Exemplo EX02 carrega os nove pontos já linearizados deste trabalho, com vX e vY propagados. Para reproduzir a reta do relatório, marque a regressão, escolha **pesos 1/vY²** e atualize o gráfico. O programa não faz a linearização automaticamente. Permite exportar PNG (3600 × 2400 pixels) e SVG vetorial.
+Use a **[Calculadora de gráficos](https://yheitor13.github.io/Fisica/calculadora-de-grafico/)**, também disponível em [programa-graficos/](../apoio/programa-graficos/). O botão Exemplo EX02 carrega os nove pontos já linearizados deste trabalho, com vX e vY propagados. Para reproduzir a reta do relatório, marque a regressão, escolha **pesos 1/vY²** e atualize o gráfico. O programa não faz a linearização automaticamente. Permite exportar PNG (3600 × 2400 pixels) e SVG vetorial.
 
 
-## Gráficos produzidos no GráficoLab
+## Gráficos produzidos na Calculadora de gráficos
 
-As Figuras 3, 4 e 5 do PDF e do Word foram substituídas por exportações do **GráficoLab 1.1** em 05/10/2026. O aplicativo foi desenvolvido especificamente para a elaboração dos gráficos deste trabalho, fato registrado na metodologia e na referência bibliográfica. As fontes das três figuras identificam o programa. O relatório mantém 19 páginas, quatro tabelas, quatro fotografias e as mesmas equações e resultados.
+As Figuras 3, 4 e 5 do PDF e do Word foram substituídas por exportações da **Calculadora de gráficos 1.1** em 05/10/2026. O aplicativo foi desenvolvido especificamente para a elaboração dos gráficos deste trabalho, fato registrado na metodologia e na referência bibliográfica. As fontes das três figuras identificam o programa. O relatório mantém 19 páginas, quatro tabelas, quatro fotografias e as mesmas equações e resultados.
 
-Os PDFs individuais na raiz correspondem às novas figuras. PNGs de 3600 × 2400 pixels e SVGs vetoriais estão em [tmp/relatorio/graficos/](tmp/relatorio/graficos/); o registro dos dados exportados está em [tmp/relatorio/exportacoes_graficolab.json](tmp/relatorio/exportacoes_graficolab.json).
+Os PDFs individuais na raiz correspondem às novas figuras. PNGs de 3600 × 2400 pixels e SVGs vetoriais estão em [tmp/relatorio/graficos/](tmp/relatorio/graficos/); os dados exportados estão no [registro das exportações](tmp/relatorio/exportacoes_graficolab.json).
 
 Para reproduzir, escolha o tipo em **Gráfico do exemplo EX02** e clique em **Exemplo EX02**. Os dados originais são apresentados como pontos com barras; na versão linearizada, ative a reta com pesos 1/vY²; a opção de curva original usa os coeficientes já calculados, sem realizar nova regressão. O programa continua sem transformar os dados automaticamente. A exportação ampliou as fontes para legibilidade no relatório.
 
