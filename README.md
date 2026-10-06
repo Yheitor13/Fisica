@@ -1,13 +1,15 @@
-# Física Experimental — UFU
+# Física — trabalhos experimentais
 
-**[Abrir o portal dos trabalhos](https://yheitor13.github.io/Fisica/)** · [GráficoLab](https://yheitor13.github.io/Fisica/graficolab/)
-
-Relatórios e materiais de Física Geral Experimental I, turma LabFis1_Eng_2026-2. O portal reúne os documentos finais e os principais materiais de EX01 e EX02, sem exigir navegação pelas pastas do GitHub.
-
-| Trabalho | Conteúdo | Acesso |
+| Projeto | Conteúdo | Situação |
 | --- | --- | --- |
-| [EX01](FisicaEx01/) | Medidas dimensionais, volumes e propagação de incertezas; prática de 15/09/2026 | [Relatório PDF](FisicaEx01/Relatório_Final.pdf) · [Word](FisicaEx01/Relatório_Final.docx) |
-| [EX02](FisicaEx02/) | Distância e tempo, linearização e ajuste ponderado; prática de 29/09/2026 | [Relatório PDF](FisicaEx02/Relatorio_Final.pdf) · [Word](FisicaEx02/Relatorio_Final.docx) |
+| [Trabalho 01](FisicaEx01/) | Medidas, volumes e propagação de incertezas | [Relatório disponível](FisicaEx01/Relatório_Final.pdf) |
+| [Trabalho 02](FisicaEx02/) | Linearização | [Relatório, cálculos e gráficos disponíveis](FisicaEx02/) |
+
+**Programa de gráficos:** [Abrir o GráficoLab](https://yheitor13.github.io/Fisica/graficolab/)
+
+**Site dos trabalhos:** [Abrir e compartilhar o índice de Física](https://yheitor13.github.io/Fisica/)
+
+Acesse cada trabalho para consultar relatórios, cálculos, planilhas, gráficos e materiais do experimento.
 
 ## Organização
 
