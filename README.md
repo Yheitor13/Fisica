@@ -1,9 +1,9 @@
 # Física — trabalhos experimentais
 
-| Projeto | Conteúdo | Situação |
-| --- | --- | --- |
-| [Trabalho 01](FisicaEx01/) | Medidas, volumes e propagação de incertezas | [Relatório disponível](FisicaEx01/Relatório_Final.pdf) |
-| [Trabalho 02](FisicaEx02/) | Linearização | [Relatório, cálculos e gráficos disponíveis](FisicaEx02/) |
+| Projeto | Conteúdo |
+| --- | --- |
+| [Trabalho 01](FisicaEx01/) | Medidas, volumes e propagação de incertezas |
+| [Trabalho 02](FisicaEx02/) | Linearização |
 
 **Programa de gráficos:** [Abrir o GráficoLab](https://yheitor13.github.io/Fisica/graficolab/)
 
