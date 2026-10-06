@@ -41,4 +41,6 @@ Os scripts em `tmp/` registram etapas diferentes da produção; não há um úni
 
 ## Referências compartilhadas
 
-Consulte [referencias_gerais](../referencias_gerais/) para os materiais comuns aos próximos trabalhos. O acervo deste projeto foi preservado como registro histórico.
+Consulte [referencias_gerais](../apoio/referencias_gerais/) para os materiais comuns aos próximos trabalhos. O acervo deste projeto foi preservado como registro histórico.
+
+[Portal dos trabalhos](https://yheitor13.github.io/Fisica/) · [GráficoLab](https://yheitor13.github.io/Fisica/graficolab/)

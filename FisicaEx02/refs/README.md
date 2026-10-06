@@ -4,6 +4,6 @@
 - [Planilha original editável](medidas_fisicaEX02.xlsx): fonte das medições corrigidas; consultar a versão salva antes de analisar.
 - [Foto das medidas](foto_medidas_2026-09-29.jpg): registro original das anotações.
 - [Fotos do experimento](Fotos/): quatro fotografias incorporadas ao relatório e ZIP original preservado.
-- [Referências gerais](../../referencias_gerais/): apostila, aulas e orientações comuns à disciplina.
+- [Referências gerais](../../apoio/referencias_gerais/): apostila, aulas e orientações comuns à disciplina.
 
 As fotografias e a planilha pertencem ao segundo experimento. Os materiais do trabalho 01 permanecem na pasta de origem.

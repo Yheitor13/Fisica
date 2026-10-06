@@ -1,6 +1,6 @@
 # Referências gerais de Física
 
-Materiais revisados em 29/09/2026 a partir do acervo do trabalho 01. Os originais históricos permanecem em `../FisicaEx01/refs/`; esta pasta é o ponto de consulta para novos trabalhos.
+Materiais revisados em 29/09/2026 a partir do acervo do trabalho 01. Os originais históricos permanecem em `../../FisicaEx01/refs/`; esta pasta é o ponto de consulta para novos trabalhos.
 
 | Material | Aplicação e limites |
 | --- | --- |
@@ -13,10 +13,10 @@ Materiais revisados em 29/09/2026 a partir do acervo do trabalho 01. Os originai
 
 ## Materiais específicos preservados
 
-O [roteiro do trabalho 01](../FisicaEx01/refs/Trabalho_FG1.pdf), suas [fotos](../FisicaEx01/refs/Fotos/) e seus [resultados](../FisicaEx01/Relatório_Final.pdf) continuam no projeto de origem. Servem de precedente experimental, não de substituto do roteiro de outra prática.
+O [roteiro do trabalho 01](../../FisicaEx01/refs/Trabalho_FG1.pdf), suas [fotos](../../FisicaEx01/refs/Fotos/) e seus [resultados](../../FisicaEx01/Relatório_Final.pdf) continuam no projeto de origem. Servem de precedente experimental, não de substituto do roteiro de outra prática.
 
 ## Reutilização entre experimentos
 
 Registrar no trabalho que recebe os dados: arquivo e experimento de origem, grandeza e unidade, incerteza, método e condições experimentais relevantes. Reavaliar se instrumento, modelo e condições permitem o uso. Não transportar medidas, incertezas instrumentais ou conclusões automaticamente.
 
-Para o trabalho 02, consultar desde já os capítulos 4 e 5 da apostila como base conceitual. A transformação e o ajuste serão escolhidos somente após receber o roteiro.
+Para o trabalho 02, os capítulos 4 e 5 da apostila complementam o [material de propagação e linearização](../../FisicaEx02/refs/Aula3-PropagacaoLinearizacao.pdf). O tratamento anterior à linearização segue o procedimento do relatório 01, com as incertezas próprias do segundo experimento.

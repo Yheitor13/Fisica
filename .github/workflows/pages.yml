@@ -1,8 +1,8 @@
-name: Publicar GráficoLab
+name: Publicar portal de Física
 on:
   push:
     branches: [main]
-    paths: ['programa-graficos/**', '.github/workflows/pages.yml']
+    paths: ['apoio/**', 'FisicaEx01/**', 'FisicaEx02/**', '.github/workflows/pages.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -17,12 +17,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verificar dados e regressão
-        run: node --test programa-graficos/tests/data.test.cjs
+      - name: Verificar cálculos do GráficoLab
+        run: node --test apoio/programa-graficos/tests/data.test.cjs
+      - name: Montar portal e conferir links
+        run: node apoio/portal/build.cjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: programa-graficos
+          path: .pages
   deploy:
     needs: build
     runs-on: ubuntu-latest

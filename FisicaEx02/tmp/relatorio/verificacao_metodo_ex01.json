@@ -1,0 +1,70 @@
+{
+  "base": "EX01: médias, desvio amostral, s/√N e combinação em quadratura; unidades e contribuições instrumentais próprias do EX02.",
+  "source_sha256": "f637ae3d1cd924278a3c55be532b49559db9de895da5fd23426451b6923280f1",
+  "report_source_sha256": "c9fe893753bb6de1564c3dc5b513eccafbc31e8fc76d2f08b8911c06177fa3ae",
+  "pontos": [
+    {
+      "ponto": 1,
+      "media_s": 0.15416666666666667,
+      "desvio_amostral_s": 0.0005507570547286067,
+      "incerteza_media_s": 0.00031797973380564654,
+      "incerteza_total_s": 0.0003333333333333314
+    },
+    {
+      "ponto": 2,
+      "media_s": 0.2932,
+      "desvio_amostral_s": 0.0033955853692699115,
+      "incerteza_media_s": 0.001960442127004338,
+      "incerteza_total_s": 0.0019629909152447176
+    },
+    {
+      "ponto": 3,
+      "media_s": 0.4436333333333333,
+      "desvio_amostral_s": 0.0007023769168568272,
+      "incerteza_media_s": 0.0004055175020198686,
+      "incerteza_total_s": 0.0004176654695380432
+    },
+    {
+      "ponto": 4,
+      "media_s": 0.5968,
+      "desvio_amostral_s": 0.0008185352771872634,
+      "incerteza_media_s": 0.0004725815626252715,
+      "incerteza_total_s": 0.0004830458915396584
+    },
+    {
+      "ponto": 5,
+      "media_s": 0.7311666666666666,
+      "desvio_amostral_s": 0.0015044378795195656,
+      "incerteza_media_s": 0.000868587614719691,
+      "incerteza_total_s": 0.0008743251365735989
+    },
+    {
+      "ponto": 6,
+      "media_s": 0.8751666666666666,
+      "desvio_amostral_s": 0.001650252505931526,
+      "incerteza_media_s": 0.0009527737285304211,
+      "incerteza_total_s": 0.0009580071908799853
+    },
+    {
+      "ponto": 7,
+      "media_s": 0.9921,
+      "desvio_amostral_s": 0.001178982612255138,
+      "incerteza_media_s": 0.0006806859285553921,
+      "incerteza_total_s": 0.0006879922480183307
+    },
+    {
+      "ponto": 8,
+      "media_s": 1.1278,
+      "desvio_amostral_s": 0.0012124355652981995,
+      "incerteza_media_s": 0.0006999999999999916,
+      "incerteza_total_s": 0.0007071067811865393
+    },
+    {
+      "ponto": 9,
+      "media_s": 1.2760666666666667,
+      "desvio_amostral_s": 0.004110150037812825,
+      "incerteza_media_s": 0.002372996230740985,
+      "incerteza_total_s": 0.0023751023369764346
+    }
+  ]
+}

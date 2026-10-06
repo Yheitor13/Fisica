@@ -24,7 +24,7 @@ O relatório tem 19 páginas, quatro tabelas, três gráficos e quatro fotografi
 
 - [refs/](refs/) — material da aula, planilha original editável, foto das medições e [fotografias do experimento](refs/Fotos/).
 - [tmp/](tmp/) — cálculos em precisão completa, imagens dos gráficos e versões anteriores de apoio.
-- [Referências gerais](../referencias_gerais/) — apostila, aulas comuns e orientações da disciplina.
+- [Referências gerais](../apoio/referencias_gerais/) — apostila, aulas comuns e orientações da disciplina.
 
 A estrutura segue o padrão do trabalho 01: arquivos finais na raiz, fontes em `refs/` e materiais de desenvolvimento em `tmp/`. Os nomes dos relatórios foram mantidos para preservar seus links. Todos os arquivos preexistentes foram conservados.
 
@@ -46,7 +46,7 @@ A antiga pasta `trab02` no histórico do GitHub foi consolidada nesta `FisicaEx0
 
 ## Gerar novos gráficos
 
-Use o **[GráficoLab](https://yheitor13.github.io/Fisica/)**, também disponível em [programa-graficos/](../programa-graficos/). O botão Exemplo EX02 carrega os nove pontos já linearizados deste trabalho, com vX e vY propagados. Para reproduzir a reta do relatório, marque a regressão, escolha **pesos 1/vY²** e atualize o gráfico. O programa não faz a linearização automaticamente. Permite exportar PNG (3600 × 2400 pixels) e SVG vetorial.
+Use o **[GráficoLab](https://yheitor13.github.io/Fisica/graficolab/)**, também disponível em [programa-graficos/](../apoio/programa-graficos/). O botão Exemplo EX02 carrega os nove pontos já linearizados deste trabalho, com vX e vY propagados. Para reproduzir a reta do relatório, marque a regressão, escolha **pesos 1/vY²** e atualize o gráfico. O programa não faz a linearização automaticamente. Permite exportar PNG (3600 × 2400 pixels) e SVG vetorial.
 
 
 ## Gráficos produzidos no GráficoLab
@@ -56,3 +56,12 @@ As Figuras 3, 4 e 5 do PDF e do Word foram substituídas por exportações do **
 Os PDFs individuais na raiz correspondem às novas figuras. PNGs de 3600 × 2400 pixels e SVGs vetoriais estão em [tmp/relatorio/graficos/](tmp/relatorio/graficos/); o registro dos dados exportados está em [tmp/relatorio/exportacoes_graficolab.json](tmp/relatorio/exportacoes_graficolab.json).
 
 Para reproduzir, escolha o tipo em **Gráfico do exemplo EX02** e clique em **Exemplo EX02**. Os dados originais são apresentados como pontos com barras; na versão linearizada, ative a reta com pesos 1/vY²; a opção de curva original usa os coeficientes já calculados, sem realizar nova regressão. O programa continua sem transformar os dados automaticamente. A exportação ampliou as fontes para legibilidade no relatório.
+
+
+## Base metodológica do trabalho 01
+
+O [relatório do EX01](../FisicaEx01/Relatório_Final.pdf), de Fernandes et al. (2026), é citado na fundamentação, na apresentação da Tabela 2 e nas referências do EX02. Seu procedimento de média, desvio padrão amostral, incerteza da média s/√N e combinação em quadratura foi aplicado às três leituras de tempo de cada ponto. Os nove pontos foram recalculados a partir da planilha salva e conferidos com os resultados de precisão completa, sem alterações numéricas.
+
+A reutilização é metodológica: medidas, modelos de volume e incertezas do paquímetro do EX01 não são transportados ao EX02. Aqui permanecem σinst = 0,0001 s e σx = 1 cm, com propagação para os logaritmos e regressão conforme o material específico do segundo experimento. A conferência está em [tmp/relatorio/verificacao_metodo_ex01.json](tmp/relatorio/verificacao_metodo_ex01.json).
+
+[Portal dos trabalhos](https://yheitor13.github.io/Fisica/) · [Pasta de apoio](../apoio/)

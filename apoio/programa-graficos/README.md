@@ -2,7 +2,7 @@
 
 **Versão 1.1 — 05/10/2026.** Desenvolvido para a elaboração dos gráficos do trabalho 02 de Física Geral Experimental I.
 
-**[Abrir o programa](https://yheitor13.github.io/Fisica/)**
+**[Abrir o programa](https://yheitor13.github.io/Fisica/graficolab/)**
 
 Aplicativo gratuito para representar medidas experimentais com barras de incerteza horizontais e verticais, ajustar uma reta opcional e exportar figuras para relatórios. HTML, CSS e JavaScript; todo o processamento ocorre no navegador. Não exige cadastro, instalação, banco de dados ou servidor de processamento.
 
@@ -58,24 +58,24 @@ O gráfico permite zoom e deslocamento, mas não arrastar pontos, barras, títul
 
 ## Executar localmente
 
-Baixe este repositório e abra **programa-graficos/index.html** no navegador. Mantenha as subpastas junto dele. Funciona sem internet: a biblioteca Plotly está incluída em `vendor/`; não há fontes remotas, analytics, chamadas a APIs ou envio das medições.
+Baixe este repositório e abra **apoio/programa-graficos/index.html** no navegador. Mantenha as subpastas junto dele. Funciona sem internet: a biblioteca Plotly está incluída em `vendor/`; não há fontes remotas, analytics, chamadas a APIs ou envio das medições.
 
-Opcionalmente, para desenvolvimento, execute `python -m http.server 8080 --directory programa-graficos` na raiz do repositório e acesse `http://localhost:8080`. Para testar os cálculos com Node.js: `node --test programa-graficos/tests/data.test.cjs`. Usuários do programa não precisam instalar Python nem Node.
+Opcionalmente, para desenvolvimento, execute `python -m http.server 8080 --directory apoio/programa-graficos` na raiz do repositório e acesse `http://localhost:8080`. Para testar os cálculos com Node.js: `node --test apoio/programa-graficos/tests/data.test.cjs`. Usuários do programa não precisam instalar Python nem Node.
 
 ## Publicar no GitHub Pages
 
-O fluxo [`.github/workflows/pages.yml`](../.github/workflows/pages.yml) testa os cálculos e publica apenas a pasta deste programa; os relatórios e planilhas continuam disponíveis no repositório.
+O fluxo [`.github/workflows/pages.yml`](../../.github/workflows/pages.yml) testa os cálculos e publica o portal na página inicial, o programa em `graficolab/` e os documentos finais de ambos os trabalhos.
 
 1. Em **Settings → Pages → Build and deployment**, selecione **GitHub Actions**.
-2. Envie as alterações para `main` ou execute o fluxo **Publicar GráficoLab** em **Actions → Run workflow**.
-3. Aguarde o trabalho de publicação terminar. Neste repositório, o endereço é `https://yheitor13.github.io/Fisica/`.
+2. Envie as alterações para `main` ou execute o fluxo **Publicar portal de Física** em **Actions → Run workflow**.
+3. Aguarde o trabalho de publicação terminar. Neste repositório, o endereço é `https://yheitor13.github.io/Fisica/graficolab/`.
 
 Em um fork, habilite Actions e Pages e atualize os links deste README e da interface para a sua conta. Não são necessários secrets nem serviços pagos. Consulte a [documentação oficial do GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
 ## Organização
 
 ```text
-programa-graficos/
+apoio/programa-graficos/
   index.html              Interface
   favicon.svg
   css/style.css           Aparência e adaptação para celular
@@ -104,3 +104,5 @@ Na opção **Curva de potência com parâmetros informados**, também é possív
 Os gráficos do relatório foram exportados pela interface em PNG e SVG. As versões PDF foram obtidas a partir dos mesmos SVGs, sem modificar os dados ou os elementos das figuras. A exportação usa fontes ampliadas para leitura ao inserir uma figura com largura de 16 cm no relatório. O CSV de dados originais está em `exemplos/dados-originais-ex02.csv`.
 
 A reprodução gráfica não recalcula as incertezas dos coeficientes, qui-quadrado ou propagação: esses resultados continuam documentados no relatório. Fotografias, equações e tabelas do relatório são independentes do aplicativo.
+
+[Voltar ao portal de Física Experimental](https://yheitor13.github.io/Fisica/)

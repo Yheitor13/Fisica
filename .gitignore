@@ -6,3 +6,6 @@ __pycache__/
 # Arquivos temporários do Office
 ~$*
 .~lock.*#
+
+# Cópia de publicação gerada pelo portal
+.pages/
