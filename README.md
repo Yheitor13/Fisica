@@ -7,6 +7,8 @@
 
 **Programa de gráficos:** [Abrir a Calculadora de gráficos](https://yheitor13.github.io/Fisica/calculadora-de-grafico/)
 
+**Tabela experimental e cálculos:** [Abrir a Calculadora de Física Experimental](https://yheitor13.github.io/Fisica/calculadora-fisica/) — fórmulas, estatística, propagação de incertezas, linearização e exportação CSV/XLSX.
+
 **Site dos trabalhos:** [Abrir e compartilhar o índice de Física](https://yheitor13.github.io/Fisica/)
 
 Acesse cada trabalho para consultar relatórios, cálculos, planilhas, gráficos e materiais do experimento.

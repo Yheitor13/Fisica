@@ -6,6 +6,7 @@ Esta pasta reúne o material complementar à leitura dos relatórios. Os conteú
 | --- | --- |
 | [referencias_gerais](referencias_gerais/) | Apostila, aulas comuns, instruções e modelo de formatação. |
 | [programa-graficos](programa-graficos/) | Código, exemplos e testes da Calculadora de gráficos. |
+| [calculadora-fisica](calculadora-fisica/) | Tabela experimental, estatística, fórmulas e propagação de incertezas. |
 | [portal](portal/) | Página de acesso geral aos dois exercícios e processo de publicação. |
 
 Os roteiros, registros de medidas e fotografias específicos continuam em `FisicaEx01/refs/` e `FisicaEx02/refs/`. Materiais de desenvolvimento de cada trabalho permanecem nas respectivas pastas `tmp/` para preservar os registros históricos.
