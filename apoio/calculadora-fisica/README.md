@@ -41,7 +41,7 @@ Os cálculos mantêm a precisão completa até a apresentação. O seletor de pr
 
 **Apostila:** medidas 0,680, 0,660 e 0,670 m, com incerteza instrumental 0,005 m. Resultado apresentado: (0,670 ± 0,008) m.
 
-**Trabalho 02:** dados conferidos na versão salva de `FisicaEx02/refs/medidas_fisicaEX02.xlsx`, aba Medidas, B6:E14, em 07/10/2026. Os tempos estão em segundos e as distâncias em cm. O exemplo configura σinst = 0,0001 s. Na linearização, informar σx = 1 cm e referências 1 s/1 cm conforme o experimento. Esses valores não são padrão para outros experimentos.
+**Trabalho 01:** as 16 dimensões das quatro peças, com três leituras cada, foram conferidas na Tabela 1 do relatório final. Todas estão em centímetros. A coluna instrumental contém 0,001 cm para a bateria e 0,005 cm para arruela e peças com ressalto, conforme a metodologia do próprio relatório. O exemplo já seleciona somente as três leituras para calcular média, DP, incertezas e apresentação final. A segunda leitura de L é 1,31 cm. O trabalho 02 não aparece no seletor de exemplos.
 
 Salvar sessão guarda medidas e configuração em JSON versão 2. Ao abrir, o usuário recalcula a tabela. Não há salvamento automático. Sessões da antiga calculadora genérica não são carregadas nesta versão; seus dados podem ser importados pelo CSV exportado anteriormente. A cópia de tabelas anteriores permanece somente na aba aberta.
 

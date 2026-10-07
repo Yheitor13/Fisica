@@ -7,7 +7,7 @@
 
 **Programa de gráficos:** [Abrir a Calculadora de gráficos](https://yheitor13.github.io/Fisica/calculadora-de-grafico/)
 
-**Tabela experimental e cálculos:** [Abrir a Calculadora de Física Experimental](https://yheitor13.github.io/Fisica/calculadora-fisica/) — tabela de medidas → seleção de média, DP, incertezas, volumes, linearização ou regressão → tabela calculada para copiar ou exportar em CSV/XLSX. Métodos conferidos com a apostila e os relatórios.
+**Tabela experimental e cálculos:** [Abrir a Calculadora de Física Experimental](https://yheitor13.github.io/Fisica/calculadora-fisica/) — tabela de medidas → seleção de média, DP, incertezas, volumes, linearização ou regressão → tabela calculada para copiar ou exportar em CSV/XLSX. Métodos conferidos com a apostila e os relatórios; exemplo com as medidas do trabalho 01.
 
 **Site dos trabalhos:** [Abrir e compartilhar o índice de Física](https://yheitor13.github.io/Fisica/)
 

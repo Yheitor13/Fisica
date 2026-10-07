@@ -12,3 +12,11 @@ test('trabalho 02: nove medidas salvas reproduzem a linearização e o relatóri
  const data=[[10,.1548,.1538,.1539],[20,.2916,.2909,.2971],[30,.4429,.4443,.4437],[40,.597,.5975,.5959],[50,.7304,.7329,.7302],[60,.8735,.8752,.8768],[70,.9934,.9911,.9918],[80,1.1291,1.1267,1.1276],[90,1.2808,1.2734,1.274]];
  const points=data.map(([x,...times])=>{const s=L.treatment(times,.0001),X=L.transform('ln',s.mean,s.total),Y=L.transform('ln',x,1);return {x:X.value,y:Y.value,u:Y.uncertainty};});const r=L.regression(points);near(r.a,1.0491426034754439);near(r.b,4.247506620097855);near(r.ua,.018785012309582138);near(r.ub,.005946470459190463);near(r.chi,2.7561086423632446);const p=L.powerReturn(r.a,r.ua,r.b,r.ub,1);near(p.C,69.93083066019229);near(p.uC,.41584161870748415);
 });
+
+test('exemplo EX01: 16 dimensões e quatro volumes conferidos com as tabelas do relatório',()=>{
+ const source=require('node:fs').readFileSync(require('node:path').join(__dirname,'app.js'),'utf8');
+ const data=JSON.parse(source.match(/const EX01=(.*);/)[1]);assert.equal(data.length,16);assert.equal(data[15][2],1.31);
+ const table2=[[2.036667,.040415,.023333,.023355],[.306667,.005774,.003333,.003480],[.726667,.020817,.012019,.013017],[1.870000,.020000,.011547,.012583],[.083333,.066583,.038442,.038766],[.693333,.083267,.048074,.048333],[1.796667,.090738,.052387,.052626],[2.480000,.070000,.040415,.040723],[2.453333,.138684,.080069,.080225],[.366667,.076376,.044096,.044378],[.573333,.063509,.036667,.037006],[1.193333,.083267,.048074,.048333],[2.170000,.060828,.035119,.035473],[.803333,.355293,.205129,.205190],[.486667,.420159,.242579,.242630],[1.303333,.100167,.057831,.058047]];
+ const results=data.map((r,i)=>{assert.equal(r[4],i<2?.001:.005);const s=L.treatment(r.slice(1,4),r[4]);[s.mean,s.s,s.sem,s.total].forEach((v,j)=>assert.ok(Math.abs(v-table2[i][j])<=.00000051));return s;});
+ for(const [name,start,value,u] of [['cylinder',0,.99907103,.02556455],['washer',2,.19431114,.09045218],['shoulder',5,11.71576875,.55969759],['cut',10,3.02713992,.70843240]]){const v={},sigma={};L.models[name].vars.forEach((key,i)=>{v[key]=results[start+i].mean;sigma[key]=results[start+i].total;});const r=L.model(name,v,sigma);assert.ok(Math.abs(r.value-value)<5.1e-9);assert.ok(Math.abs(r.uncertainty-u)<5.1e-9);}
+});
