@@ -20,7 +20,7 @@ jobs:
       - name: Verificar cálculos da Calculadora de gráficos
         run: node --test apoio/programa-graficos/tests/data.test.cjs
       - name: Verificar calculadora de tabelas
-        run: node --test apoio/calculadora-fisica/engine.test.cjs
+        run: node --test apoio/calculadora-fisica/*.test.cjs
       - name: Montar portal e conferir links
         run: node apoio/portal/build.cjs
       - uses: actions/configure-pages@v5

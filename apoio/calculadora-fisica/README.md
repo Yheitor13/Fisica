@@ -1,55 +1,56 @@
-# Calculadora de tabelas de Física Experimental
+# Tabelas e cálculos de Física Experimental I
 
-Ferramenta gratuita para construir progressivamente tabelas de medidas e resultados. Funciona no navegador, inclusive abrindo `index.html` localmente, sem dependências externas, instalação, conta, backend ou envio de dados.
+Aplicativo para transformar medidas em tabelas de resultados, seguindo o tratamento usado nos relatórios 01 e 02 e nos capítulos 2–5 da apostila. Funciona no navegador, sem conta, instalação ou envio das medidas a um servidor.
 
-## Utilização
+## Como usar
 
-1. Digite as medidas, cole células de uma planilha ou importe CSV com cabeçalhos. Cada coluna possui nome e unidade editáveis. Tabulação e ponto e vírgula permitem números com vírgula decimal; CSV separado por vírgulas exige ponto decimal ou campos entre aspas.
-2. Em **Escolha o cálculo**, selecione uma fórmula e associe suas variáveis às colunas.
-3. Informe o nome e a unidade do resultado. Ative a propagação e selecione as incertezas quando necessário. Para uma grandeza exata, escolha **0 (exata)** explicitamente.
-4. Crie o valor e a incerteza juntos ou escolha **Somente a incerteza** para complementar uma coluna já existente.
-5. Exporte CSV, XLSX ou copie a tabela. Por padrão, a exportação usa precisão completa. A opção de arredondamento é explícita.
-6. Salve uma sessão JSON antes de fechar a aba para recuperar medidas e fórmulas. Não há salvamento automático nem armazenamento remoto.
+1. Digite as medidas, importe CSV ou cole a tabela do Excel/Sheets, com cabeçalhos. Informe a unidade de cada coluna; também é aceito `t1 [s]` no cabeçalho importado.
+2. Escolha o cálculo da disciplina. Para leituras como t1, t2 e t3, selecione as colunas de repetições e marque os resultados desejados. Também é possível tratar repetições em uma coluna, gerando um resumo por coluna.
+3. Informe a incerteza instrumental quando o cálculo exigir. Pode ser um valor comum ou uma coluna com uma incerteza por linha. Ela não é deduzida da resolução do instrumento.
+4. Clique em **Calcular tabela**. A entrada e os resultados ficam separados. Uma alteração nas medidas ou na configuração invalida a saída até o próximo cálculo.
+5. Copie ou exporte os resultados em CSV/XLSX. Para continuar o tratamento, use a tabela calculada como entrada na próxima etapa. A tabela anterior permanece recuperável durante a sessão da aba.
 
-As colunas originais não são substituídas por cálculos. São editáveis pelo usuário, e suas alterações recalculam as colunas dependentes. Colagem, exclusão e substituição de tabela exigem confirmação. Colunas calculadas são somente leitura nos valores. **Desfazer cálculo** remove apenas a última coluna calculada; **Refazer** a restaura. Outras alterações encerram o histórico de refazer.
+Vírgula e ponto decimal são aceitos. Para colar números com vírgula, separe as colunas com tabulação ou ponto e vírgula. Os cabeçalhos devem ser diferentes entre si. Limites: 10.000 linhas, 100 colunas, arquivos de 5 MB. Campos não numéricos podem identificar as linhas; colunas selecionadas para cálculo precisam conter números válidos. No resumo por coluna, células vazias são ignoradas e N registra a contagem utilizada.
 
-## Cálculos disponíveis
+## Procedimentos disponíveis
 
-- Soma, subtração, multiplicação, divisão, potência e produto com expoentes exatos.
-- Soma dos quadrados, incluindo D² = d1² + d2².
-- Média, mínimo, máximo, número de medidas, desvio padrão amostral e desvio padrão da média.
-- Desvios assinados e absolutos em relação à média.
-- Erro absoluto, relativo e percentual em relação a uma coluna de referência.
-- Quadrado, cubo, raiz, inverso, logaritmo natural e decimal.
-- Fórmulas personalizadas com +, −, *, /, ^, parênteses, π/pi, e, sqrt, ln, log10, abs, exp, sin e cos.
+- N, média, DP amostral, incerteza da média, incerteza instrumental, incerteza total, mínimo, máximo, incerteza relativa e percentual, apresentação valor ± incerteza.
+- Desvios assinados, absolutos e quadráticos de cada leitura em relação à média.
+- Combinação de incertezas estatística e instrumental em quadratura.
+- Volumes de paralelepípedo, cilindro, arruela, peça com ressalto/furo e peça com corte do relatório 01; propagação nas expressões completas, incluindo dimensões compartilhadas.
+- Propagação na soma dos quadrados, produto, razão e diferença de grandezas independentes.
+- Linearização das duas coordenadas por ln, log10, quadrado ou inverso, com propagação das incertezas. A saída X, vX, Y, vY pode ser usada na Calculadora de gráficos.
+- Regressão linear ponderada por 1/σY²: tabela de pesos e produtos, valores ajustados e resíduos; tabela separada com a, σa, b, σb, χ², graus de liberdade e χ² reduzido.
+- Retorno da regressão em logaritmos naturais à lei y = C(x/xref)^n, com n = a, C = yref exp(b) e σC = Cσb.
 
-Na estatística, cada coluna representa uma série de medidas. Células vazias são ignoradas, mas valores inválidos são rejeitados. Média e desvios globais são repetidos nas linhas preenchidas; os desvios individuais variam por linha. Desvio padrão e erro da média exigem pelo menos duas medidas. Para a média de repetições em colunas distintas, use uma expressão como `(t1+t2+t3)/3`.
+A interface não oferece um editor genérico de fórmulas. As leis dos experimentos posteriores da apostila e a propagação com covariâncias não estão automatizadas.
 
-Fórmulas aceitam `D2 = d1² + d2²` ou apenas a expressão. Use colchetes para nomes com espaços ou símbolos, como `[D²]`. Prefira multiplicação explícita (`pi * D^2 * h / 4`) para evitar ambiguidades. São aceitos `πD²h/4` e `2x` quando os nomes das colunas identificam os fatores. Nomes completos de colunas têm precedência sobre uma possível multiplicação. Vírgula decimal é aceita nas constantes; não há separador de milhares.
+## Fontes e hipóteses
 
-## Propagação e confiabilidade
+A [apostila](../referencias_gerais/Apostila_LAB1.pdf), equações 2.1–2.4, define média, DP com divisor N−1, incerteza estatística s/√N e combinação instrumental. As páginas 10–11 orientam a apresentação com um algarismo significativo na incerteza e o mesmo nível decimal no valor. A equação 3.1 fundamenta a propagação de primeira ordem para variáveis independentes. Os capítulos 4 e 5 e os slides 13 e 16 do [material da aula](../../FisicaEx02/refs/Aula3-PropagacaoLinearizacao.pdf) fundamentam linearização e regressão. Os modelos geométricos seguem o [relatório 01](../../FisicaEx01/Relatório_Final.pdf).
 
-A propagação de primeira ordem é `u(f) = sqrt(sum((df/dxi * uxi)^2))`, para variáveis independentes. As derivadas são calculadas por diferenciação automática das operações matemáticas, sem aproximações por diferenças finitas. Não há `eval`, `Function` nem execução de JavaScript digitado pelo usuário.
+O ajuste considera somente incertezas verticais positivas. Não utiliza σX nem reescala as incertezas dos coeficientes pelo χ² reduzido. Com dois pontos, o ajuste existe, mas χ² reduzido é indefinido. Não há estimativa automática de aceleração da gravidade.
 
-Para D²: `u(D²) = hypot(2*d1*ud1, 2*d2*ud2)`. Multiplicação e divisão usam as derivadas diretas, evitando a singularidade artificial das fórmulas relativas quando o numerador é zero. Se a mesma coluna é usada duas vezes, suas derivadas são somadas antes da propagação. Colunas derivadas que compartilham medidas não podem ser combinadas como independentes: use a expressão completa em termos das medidas originais. Correlações entre medidas originais distintas não são inferidas; o usuário deve verificar a hipótese de independência.
+A propagação usa diferenciação automática e as expressões completas dos modelos, sem executar código digitado. Duas grandezas independentes não podem apontar para a mesma coluna. Grandezas derivadas que compartilham dados originais podem ser correlacionadas: não devem ser combinadas sob a hipótese de independência. O modelo de corte exige uma corda menor que o diâmetro da base e um corte que não atinja o ressalto ou o furo.
 
-Incertezas são absolutas e não negativas. A ferramenta não interpreta resolução instrumental como incerteza automaticamente. Derivadas inexistentes (por exemplo, sqrt em zero ou abs em zero), divisões por zero, logaritmos não positivos e resultados não finitos são sinalizados. A propagação linear de x² em x=0 resulta em zero; nessa situação, termos de ordem superior podem dominar e a aproximação deve ser avaliada antes de relatar a incerteza.
+DP e incerteza da média exigem N ≥ 2. A incerteza relativa é indefinida quando o valor é zero. Dimensões geométricas devem ser positivas. Não há conversão automática de unidades. Nos logaritmos, a referência deve ser positiva e expressa na unidade da grandeza. A unidade informada em C é a mesma de y; x continua normalizado por xref.
 
-Unidades são informadas manualmente, sem conversão nem análise dimensional. Logaritmos exigem argumentos adimensionais; normalize a grandeza pela unidade de referência antes de aplicá-los. Trigonometria usa radianos. Expoentes parametrizados são exatos.
+Os cálculos mantêm a precisão completa até a apresentação. O seletor de precisão altera apenas a exibição; exportar números arredondados exige marcar a opção correspondente. A coluna textual valor ± incerteza já contém o arredondamento da apresentação. CSV protege textos que possam ser interpretados como fórmulas; XLSX contém valores e textos literais. A tabela de coeficientes da regressão tem exportação CSV própria.
 
-Os cálculos usam números de ponto flutuante de dupla precisão, sem arredondamento intermediário. Casas decimais e algarismos significativos afetam os resultados exibidos; os campos de entrada preservam a digitação original. Valores muito pequenos podem aparecer como zero no formato fixo: use algarismos significativos para consultá-los. A exportação arredondada, quando selecionada, altera os valores do arquivo exportado, não os valores internos.
+## Exemplos e sessões
 
-Limites: 10.000 linhas, 100 colunas, arquivos de até 5 MB e expressões de até 1.000 caracteres/256 tokens. Fórmulas inválidas não criam colunas parcialmente. Exportações são bloqueadas enquanto houver células inválidas. O XLSX contém valores e unidades, sem fórmulas executáveis; use a sessão JSON para preservar o histórico dos cálculos.
+**Apostila:** medidas 0,680, 0,660 e 0,670 m, com incerteza instrumental 0,005 m. Resultado apresentado: (0,670 ± 0,008) m.
 
-## Base metodológica
+**Trabalho 02:** dados conferidos na versão salva de `FisicaEx02/refs/medidas_fisicaEX02.xlsx`, aba Medidas, B6:E14, em 07/10/2026. Os tempos estão em segundos e as distâncias em cm. O exemplo configura σinst = 0,0001 s. Na linearização, informar σx = 1 cm e referências 1 s/1 cm conforme o experimento. Esses valores não são padrão para outros experimentos.
 
-Material da disciplina: [Aula de propagação, linearização e regressão](../../FisicaEx02/refs/Aula3-PropagacaoLinearizacao.pdf), slides 2 e 13, e [Apostila de Física Experimental I](../referencias_gerais/Apostila_LAB1.pdf), capítulos 2–5. As fórmulas de estatística e propagação seguem esses métodos. Os exemplos geométricos são dados demonstrativos, não novas medições dos relatórios.
+Salvar sessão guarda medidas e configuração em JSON versão 2. Ao abrir, o usuário recalcula a tabela. Não há salvamento automático. Sessões da antiga calculadora genérica não são carregadas nesta versão; seus dados podem ser importados pelo CSV exportado anteriormente. A cópia de tabelas anteriores permanece somente na aba aberta.
 
-## Desenvolvimento e publicação
+## Verificação e publicação
 
-- `engine.js`: leitura numérica, parser, derivadas automáticas, estatística e CSV.
-- `app.js`: tabela, dependências, resultados, importação, exportação e sessão.
-- `xlsx.js`: exportação OOXML/ZIP com células numéricas e strings literais.
-- `engine.test.cjs`: testes matemáticos e de entrada, executados com `node --test apoio/calculadora-fisica/engine.test.cjs`.
+- `engine.js`: números, estatística, expressões internas e diferenciação automática.
+- `lab.js`: métodos da disciplina e validação dos modelos.
+- `app.js`: entrada, seleção dos procedimentos, resultados, exportação e sessão.
+- `xlsx.js`: exportador OOXML/ZIP sem dependências externas.
+- `engine.test.cjs` e `lab.test.cjs`: testes de matemática, validação e reprodução dos resultados do EX02. Executar `node --test apoio/calculadora-fisica/*.test.cjs`.
 
-O construtor `apoio/portal/build.cjs` inclui este aplicativo em `/calculadora-fisica/`. O fluxo do GitHub Pages executa os testes e publica o site. Não é necessário instalar pacotes para usar o aplicativo.
+O construtor `apoio/portal/build.cjs` inclui o aplicativo em `/calculadora-fisica/`; o fluxo do GitHub Pages testa e publica as alterações. A validação desta revisão também conferiu no navegador o fluxo completo do EX02, importação, exportação XLSX com precisão completa, recuperação de sessão, mensagens de erro e apresentação em celular.

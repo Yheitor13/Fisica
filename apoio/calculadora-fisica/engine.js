@@ -3,7 +3,7 @@
 'use strict';
 const fail=m=>{throw Error(m)};
 const number=s=>{if(typeof s==='number')return Number.isFinite(s)?s:fail('Valor não finito.');s=String(s??'').trim();if(!s)return fail('Célula vazia.');if(!/^[+-]?(?:\d+(?:[.,]\d*)?|[.,]\d+)(?:e[+-]?\d+)?$/i.test(s))fail('Número inválido: '+s);const n=Number(s.replace(',','.'));return Number.isFinite(n)?n:fail('Número fora do intervalo.');};
-const functions=new Set(['sqrt','ln','log10','abs','exp','sin','cos']);
+const functions=new Set(['sqrt','ln','log10','abs','exp','sin','cos','asin']);
 function parse(source,known=[]){
  if(source.length>1000)fail('Use uma expressão com até 1.000 caracteres.');
  const pieces=source.split(/(\[[^\]]+\])/g);source=pieces.map(s=>s.startsWith('[')?s:s.replace(/²/g,'^2').replace(/³/g,'^3').replace(/[×·]/g,'*').replace(/÷/g,'/').replace(/−/g,'-').replace(/√/g,'sqrt')).join('');
@@ -25,7 +25,7 @@ function evaluate(tree,values,derivatives=false){
  const scale=(g,f)=>Object.fromEntries(Object.entries(g).map(([k,v])=>[k,v===0?0:v*f]));
  const combine=(a,b,fa,fb)=>{const g={};for(const k of new Set([...Object.keys(a),...Object.keys(b)]))g[k]=(a[k]===undefined||a[k]===0?0:a[k]*fa)+(b[k]===undefined||b[k]===0?0:b[k]*fb);return g;};
  function ev(t){if(t.type==='num')return make(t.value);if(t.type==='var'){if(!Object.hasOwn(values,t.name))fail('Variável não encontrada: '+t.name);return make(number(values[t.name]),derivatives?{[t.name]:1}:{});}const a=ev(t.a);if(t.type==='unary')return make(t.op==='-'?-a.v:a.v,scale(a.g,t.op==='-'?-1:1));
- if(t.type==='fn'){let v,d;switch(t.name){case 'sqrt':if(a.v<0)fail('Raiz exige valor não negativo.');v=Math.sqrt(a.v);d=1/(2*v);break;case 'ln':case 'log10':if(a.v<=0)fail('Logaritmo exige valor positivo.');v=t.name==='ln'?Math.log(a.v):Math.log10(a.v);d=1/(a.v*(t.name==='ln'?1:Math.LN10));break;case 'abs':if(derivatives&&a.v===0&&Object.keys(a.g).length)fail('abs não tem derivada em zero.');v=Math.abs(a.v);d=Math.sign(a.v);break;case 'exp':v=Math.exp(a.v);d=v;break;case 'sin':v=Math.sin(a.v);d=Math.cos(a.v);break;case 'cos':v=Math.cos(a.v);d=-Math.sin(a.v);break;}return make(v,scale(a.g,d));}
+ if(t.type==='fn'){let v,d;switch(t.name){case 'sqrt':if(a.v<0)fail('Raiz exige valor não negativo.');v=Math.sqrt(a.v);d=1/(2*v);break;case 'ln':case 'log10':if(a.v<=0)fail('Logaritmo exige valor positivo.');v=t.name==='ln'?Math.log(a.v):Math.log10(a.v);d=1/(a.v*(t.name==='ln'?1:Math.LN10));break;case 'abs':if(derivatives&&a.v===0&&Object.keys(a.g).length)fail('abs não tem derivada em zero.');v=Math.abs(a.v);d=Math.sign(a.v);break;case 'exp':v=Math.exp(a.v);d=v;break;case 'sin':v=Math.sin(a.v);d=Math.cos(a.v);break;case 'cos':v=Math.cos(a.v);d=-Math.sin(a.v);break;case 'asin':if(Math.abs(a.v)>1)fail('Arco seno fora do domínio.');v=Math.asin(a.v);d=1/Math.sqrt(1-a.v*a.v);break;}return make(v,scale(a.g,d));}
  const b=ev(t.b);switch(t.op){case '+':return make(a.v+b.v,combine(a.g,b.g,1,1));case '-':return make(a.v-b.v,combine(a.g,b.g,1,-1));case '*':return make(a.v*b.v,combine(a.g,b.g,b.v,a.v));case '/':if(b.v===0)fail('Divisão por zero.');return make(a.v/b.v,combine(a.g,b.g,1/b.v,-a.v/(b.v*b.v)));case '^':{if(a.v<0&&!Number.isInteger(b.v))fail('Potência não real.');if(a.v===0&&b.v<=0)fail('Potência indefinida em zero.');const v=Math.pow(a.v,b.v);const da=b.v===0?0:b.v*Math.pow(a.v,b.v-1);const db=Object.keys(b.g).length?v*Math.log(a.v):0;return make(v,combine(a.g,b.g,da,db));}}}
  return ev(tree);
 }
