@@ -2,7 +2,7 @@
 const EX01=[["Bateria · D", 2.08, 2.03, 2.0, 0.001], ["Bateria · h", 0.31, 0.31, 0.3, 0.001], ["Arruela · D₁", 0.75, 0.71, 0.72, 0.005], ["Arruela · D₂", 1.85, 1.89, 1.87, 0.005], ["Arruela · h", 0.1, 0.14, 0.01, 0.005], ["Ressalto e furo · D₁", 0.76, 0.6, 0.72, 0.005], ["Ressalto e furo · D₂", 1.88, 1.7, 1.81, 0.005], ["Ressalto e furo · D₃", 2.51, 2.4, 2.53, 0.005], ["Ressalto e furo · h₁", 2.49, 2.3, 2.57, 0.005], ["Ressalto e furo · h₂", 0.45, 0.3, 0.35, 0.005], ["Ressalto, furo e corte · D₁", 0.5, 0.61, 0.61, 0.005], ["Ressalto, furo e corte · D₂", 1.1, 1.26, 1.22, 0.005], ["Ressalto, furo e corte · D₃", 2.1, 2.21, 2.2, 0.005], ["Ressalto, furo e corte · h₁", 0.4, 1.07, 0.94, 0.005], ["Ressalto, furo e corte · h₂", 0.9, 0.06, 0.5, 0.005], ["Ressalto, furo e corte · L", 1.2, 1.31, 1.4, 0.005]];
 'use strict';
 const P=Physics,L=Lab,$=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let state={cols:[{id:'c1',name:'Ponto',unit:''},{id:'c2',name:'Medida 1',unit:''},{id:'c3',name:'Medida 2',unit:''},{id:'c4',name:'Medida 3',unit:''}],rows:[{c1:'1',c2:'',c3:'',c4:''},{c1:'2',c2:'',c3:'',c4:''}],next:5},output=null,history=[],inputHistory=[],dirty=false;
+let state={cols:[{id:'c1',name:'Nome',unit:''},{id:'c2',name:'Medida 1',unit:''},{id:'c3',name:'Medida 2',unit:''},{id:'c4',name:'Medida 3',unit:''}],rows:[{c1:'',c2:'',c3:'',c4:''}],next:5},output=null,history=[],inputHistory=[],dirty=false;
 const clone=x=>JSON.parse(JSON.stringify(x));
 const meta={
  treatment:['Média → DP → incerteza da média → incerteza total','x̄ = Σxᵢ/N; s = √[Σ(xᵢ−x̄)²/(N−1)]; σm = s/√N; σtotal = √(σm²+σinst²)','Apostila, equações 2.1–2.4, p. 9','Selecione as colunas de repetições e os resultados que deseja. A incerteza instrumental deve ser informada na mesma unidade das medidas.'],
@@ -15,7 +15,7 @@ const meta={
  power:['Retorno da linearização por ln','y = C(x/xref)ⁿ; n = a; C = yref · exp(b); σC = Cσb','Apostila, capítulo 4; aula, slides 12–13','Use os coeficientes do ajuste de ln(y/yref) em função de ln(x/xref). Não se aplica ao ajuste com log10. Mantenha a mesma referência de x ao escrever a lei de potência.']};
 const stats=[['n','N'],['mean','Média'],['s','DP amostral'],['sem','Incerteza da média'],['instrument','Incerteza instrumental'],['total','Incerteza total'],['min','Mínimo'],['max','Máximo'],['relative','Incerteza relativa'],['percent','Incerteza relativa (%)'],['report','Valor ± incerteza']];
 function message(s,error=false){$('status').textContent=s;$('status').className=error?'error':'success';}
-function invalidate(){output=null;history=[];$('results').hidden=true;$('undo').disabled=true;dirty=true;message('Tabela ou configuração alterada. Clique em Calcular tabela.');}
+function invalidate(){output=null;history=[];$('results').hidden=true;$('result-panel').hidden=true;$('undo').disabled=true;dirty=true;message('');}
 function snapshot(){return Object.fromEntries([...$('config').querySelectorAll('input,select')].map(e=>[e.id,e.type==='checkbox'?e.checked:e.value]));}
 function selector(id,label,preferred,extra=''){return `<label>${esc(label)}<select id="${id}">${extra}${state.cols.map(c=>`<option value="${c.id}" ${c.id===preferred?'selected':''}>${esc(c.name)}${c.unit?' ['+esc(c.unit)+']':''}</option>`).join('')}</select></label>`;}
 function guess(re,index=0){return state.cols.find(c=>re.test(c.name))?.id||state.cols[Math.min(index,state.cols.length-1)]?.id;}
@@ -24,10 +24,14 @@ function sigma(prefix,label){return selector(prefix,label,'constant','<option va
 function configure(saved={}){
  const k=$('calculation').value,m=meta[k];$('equation').textContent=m[1];$('source').textContent=m[2];$('explanation').textContent=m[3];let h='';
  if(k==='treatment'){
- h='<label>Como as repetições estão organizadas<select id="layout"><option value="rows">Em colunas — um resultado por linha</option><option value="columns">Em linhas — um resultado por coluna</option></select></label><fieldset><legend>Colunas com as medidas repetidas</legend><div class="choices">'+state.cols.map((c,i)=>`<label class="check"><input type="checkbox" id="rep-${c.id}" ${i>0?'checked':''}>${esc(c.name)}</label>`).join('')+'</div></fieldset>';
- if(saved.layout!=='columns')h+=selector('label-column','Identificação das linhas',state.cols[0]?.id,'<option value="">Número da linha</option>');
- h+='<fieldset><legend>Quais resultados você quer?</legend><div class="choices">'+stats.map(([id,name])=>`<label class="check"><input id="out-${id}" type="checkbox" ${['n','mean','s','sem','total'].includes(id)?'checked':''}>${name}</label>`).join('')+'</div></fieldset>';
- h+=saved.layout==='columns'?field('instrument-value','Incerteza instrumental (mesma unidade das medidas)'):sigma('instrument','Incerteza instrumental');
+ const main=['mean','s','sem','total'];
+ const choices=list=>'<div class="choices">'+list.map(([id,name])=>`<label class="check"><input id="out-${id}" type="checkbox" ${['mean','s','sem'].includes(id)?'checked':''}>${id==='s'?'DP (desvio padrão)':name}</label>`).join('')+'</div>';
+ h=choices(stats.filter(([id])=>main.includes(id)));
+ h+='<div id="instrument-box">'+(saved.layout==='columns'?field('instrument-value','Incerteza instrumental (na unidade das medidas)'):sigma('instrument','Incerteza instrumental'))+'</div>';
+ h+='<details id="treatment-options"><summary>Mais opções</summary>'+choices(stats.filter(([id])=>!main.includes(id)));
+ h+='<label>Organização das leituras<select id="layout"><option value="rows">Uma linha por grandeza</option><option value="columns">Uma coluna por grandeza</option></select></label><fieldset><legend>Colunas que entram no cálculo</legend><div class="choices">'+state.cols.map((c,i)=>`<label class="check"><input type="checkbox" id="rep-${c.id}" ${i>0?'checked':''}>${esc(c.name)}</label>`).join('')+'</div></fieldset>';
+ if(saved.layout!=='columns')h+=selector('label-column','Coluna com o nome de cada linha',state.cols[0]?.id,'<option value="">Número da linha</option>');
+ h+='</details><p id="measure-summary" class="help"></p>';
  }else if(k==='deviations')h=selector('measure','Coluna de leituras',guess(/medida|t1/i,1));
  else if(k==='total')h=selector('statistical','Incerteza da média (σm)',guess(/incerteza da média/i,1))+sigma('instrument','Incerteza instrumental');
  else if(k==='relative')h=selector('measure','Valor da grandeza',guess(/média/i,1))+sigma('uncertainty','Incerteza absoluta');
@@ -42,10 +46,13 @@ function configure(saved={}){
  $('config').innerHTML=h;
  for(const [id,v] of Object.entries(saved)){const e=$(id);if(!e)continue;if(e.type==='checkbox')e.checked=!!v;else if(e.tagName!=='SELECT'||[...e.options].some(o=>o.value===v))e.value=v;}
  visibility();
- $('config').onchange=event=>{const id=event.target.id,s=snapshot();if(id==='layout'||id==='model')configure(s);else visibility();invalidate();};
+ $('config').onchange=event=>{const id=event.target.id,s=snapshot();if(id==='layout'||id==='model'){configure(s);if(id==='layout')$('treatment-options').open=true;}else visibility();invalidate();};
  $('config').oninput=()=>invalidate();
 }
-function visibility(){for(const e of $('config').querySelectorAll('select')){const f=$(e.id+'-value');if(f)f.parentElement.hidden=e.value!=='constant';if(e.id.startsWith('transform-'))$('reference-'+e.id.slice(10)).parentElement.hidden=!['ln','log10'].includes(e.value);}}
+function visibility(){
+ $('common-unit').parentElement.hidden=$('calculation').value!=='treatment';const units=[...new Set(state.cols.slice(1).map(c=>c.unit))];$('common-unit').value=units.length===1?units[0]:'';$('common-unit').placeholder=units.length>1?'Por coluna':'Ex.: cm ou s';
+ if($('instrument-box')){$('instrument-box').hidden=!['instrument','total','relative','percent','report'].some(id=>$('out-'+id).checked);$('measure-summary').textContent='Leituras selecionadas: '+state.cols.filter(c=>$('rep-'+c.id).checked).map(c=>c.name).join(', ')+'.';}
+for(const e of $('config').querySelectorAll('select')){const f=$(e.id+'-value');if(f)f.parentElement.hidden=e.value!=='constant';if(e.id.startsWith('transform-'))$('reference-'+e.id.slice(10)).parentElement.hidden=!['ln','log10'].includes(e.value);}}
 const chosen=id=>{const c=state.cols.find(c=>c.id===$(id)?.value);if(!c)throw Error('Selecione uma coluna para '+id+'.');return c;};
 function num(row,c){try{return P.number(row[c.id]);}catch(e){throw Error(c.name+': '+e.message);}}
 function uv(prefix,row){return !$(prefix)||$(prefix).value==='constant'?L.uncertainty($(prefix+'-value').value):L.uncertainty(num(row,chosen(prefix)));}
@@ -92,8 +99,8 @@ function compute(){const k=$('calculation').value;let cols,rows,secondary,descri
 function inputTable(){
  $('count').textContent=state.rows.length+' linhas · '+state.cols.length+' colunas';
  $('table').querySelector('thead').innerHTML='<tr><th>Linha</th>'+state.cols.map(c=>`<th><input data-col="${c.id}" data-key="name" aria-label="Nome da coluna" value="${esc(c.name)}"><input data-col="${c.id}" data-key="unit" aria-label="Unidade de ${esc(c.name)}" placeholder="Unidade" value="${esc(c.unit)}"><button data-delete-col="${c.id}" aria-label="Excluir ${esc(c.name)}">×</button></th>`).join('')+'<th></th></tr>';
- $('table').querySelector('tbody').innerHTML=state.rows.map((r,i)=>'<tr><th scope="row">'+(i+1)+'</th>'+state.cols.map(c=>`<td><input data-row="${i}" data-cell="${c.id}" aria-label="Linha ${i+1}, ${esc(c.name)}" value="${esc(r[c.id])}" autocomplete="off"></td>`).join('')+`<td><button data-delete-row="${i}" aria-label="Excluir linha ${i+1}">×</button></td></tr>`).join('');
- $('restore-input').disabled=!inputHistory.length;
+ $('table').querySelector('tbody').innerHTML=state.rows.map((r,i)=>'<tr><th scope="row">'+(i+1)+'</th>'+state.cols.map(c=>`<td><input data-row="${i}" data-cell="${c.id}" aria-label="Linha ${i+1}, ${esc(c.name)}" value="${esc(r[c.id])}" placeholder="${c===state.cols[0]?'Ex.: diâmetro':'0,00'}" inputmode="${c===state.cols[0]?'text':'decimal'}" autocomplete="off"></td>`).join('')+`<td><button data-delete-row="${i}" aria-label="Excluir linha ${i+1}">×</button></td></tr>`).join('');
+ $('restore-input').disabled=!inputHistory.length;const units=[...new Set(state.cols.slice(1).map(c=>c.unit))];$('common-unit').value=units.length===1?units[0]:'';
 }
 function refresh(saved=snapshot()){inputTable();configure(saved);invalidate();}
 $('table').oninput=e=>{const t=e.target;if(t.dataset.cell){state.rows[Number(t.dataset.row)][t.dataset.cell]=t.value;invalidate();}};
@@ -102,8 +109,8 @@ $('table').onclick=e=>{const t=e.target;if(t.dataset.deleteCol&&state.cols.lengt
 function shown(v){if(typeof v!=='number')return String(v??'');const d=Number($('digits').value);return ($('format').value==='decimal'?v.toFixed(d):v.toPrecision(d)).replace('.',',');}
 function heading(c){return c.name+(c.unit?' ['+c.unit+']':'');}
 function tableHTML(data){return '<thead><tr>'+data.cols.map(c=>'<th scope="col">'+esc(heading(c))+'</th>').join('')+'</tr></thead><tbody>'+data.rows.map(r=>'<tr>'+r.map((v,i)=>'<td>'+esc(['N','Linha','Graus de liberdade'].includes(data.cols[i].name)?String(v):shown(v))+'</td>').join('')+'</tr>').join('')+'</tbody>';}
-function showOutput(){if(!output){$('results').hidden=true;return;}$('results').hidden=false;$('result-description').textContent=output.title+' · '+output.description;$('result-table').innerHTML=tableHTML(output);$('secondary').innerHTML=output.secondary?'<h3>Coeficientes e qualidade do ajuste</h3><div class="table-wrap"><table>'+tableHTML(output.secondary)+'</table></div><button id="use-coefficients">Usar coeficientes para retornar à lei de potência →</button>':'';if(output.secondary)$('use-coefficients').onclick=()=>promote(output.secondary,true);$('secondary-csv').hidden=!output.secondary;$('undo').disabled=!history.length;}
-$('calculate').onclick=()=>{try{const next=compute();history.push(output);if(history.length>10)history.shift();output=next;showOutput();message(next.rows.length+' linha(s) calculada(s). Os resultados estão abaixo.');}catch(e){message(e.message,true);}};
+function showOutput(){if(!output){$('results').hidden=true;$('result-panel').hidden=true;return;}$('results').hidden=false;$('result-panel').hidden=false;$('result-description').textContent=output.title+' · '+output.description;$('result-table').innerHTML=tableHTML(output);$('secondary').innerHTML=output.secondary?'<h3>Coeficientes e qualidade do ajuste</h3><div class="table-wrap"><table>'+tableHTML(output.secondary)+'</table></div><button id="use-coefficients">Usar coeficientes para retornar à lei de potência →</button>':'';if(output.secondary)$('use-coefficients').onclick=()=>promote(output.secondary,true);$('secondary-csv').hidden=!output.secondary;$('undo').disabled=!history.length;}
+$('calculate').onclick=()=>{try{const next=compute();history.push(output);if(history.length>10)history.shift();output=next;showOutput();message('');$('result-panel').scrollIntoView({behavior:'smooth',block:'start'});}catch(e){message(e.message,true);$('status').scrollIntoView({behavior:'smooth',block:'center'});}};
 $('undo').onclick=()=>{if(history.length){output=history.pop();showOutput();$('undo').disabled=!history.length;message('Último cálculo desfeito.');}};
 $('format').onchange=showOutput;$('digits').onchange=showOutput;
 $('calculation').onchange=()=>{configure();invalidate();};
@@ -118,10 +125,12 @@ $('clear').onclick=()=>{const next=clone(state);next.rows=next.rows.map(()=>Obje
 function promote(data,power=false){if(!confirm('Usar os resultados como nova tabela de entrada? A tabela anterior ficará guardada nesta aba.'))return;inputHistory.push(clone(state));state=fromMatrix([data.cols.map(heading),...data.rows.map(r=>r.map(v=>String(v)))]);if(power)$('calculation').value='power';refresh({});message('Resultados transferidos com precisão completa. Escolha a próxima etapa.');}
 $('use-result').onclick=()=>output&&promote(output);
 $('restore-input').onclick=()=>{if(inputHistory.length&&confirm('Voltar à tabela anterior?')){state=inputHistory.pop();refresh({});}};
-$('example').onclick=async()=>{try{const kind=$('example-kind').value;let matrix,settings;
- if(kind==='ex01'){matrix=[['Peça e grandeza','Leitura 1 [cm]','Leitura 2 [cm]','Leitura 3 [cm]','σ instrumental [cm]'],...EX01];settings={'instrument':'c5','rep-c5':false,'out-instrument':true,'out-report':true};}else{matrix=[['Grandeza','L1 [m]','L2 [m]','L3 [m]'],['L','0,680','0,660','0,670']];settings={'instrument-value':'0,005','out-report':true};}
- if(!confirm('Carregar o exemplo e substituir a entrada atual?'))return;inputHistory.push(clone(state));state=fromMatrix(matrix);$('calculation').value='treatment';refresh(settings);message(kind==='ex01'?'Trabalho 01: 16 dimensões das quatro peças. Incerteza instrumental: 0,001 cm para a bateria e 0,005 cm para as demais peças, conforme o relatório.':'Exemplo da apostila: três comprimentos, incerteza instrumental de 0,005 m.');
- }catch(e){message(e.message,true);}};
+function loadExample(kind){try{let matrix,settings;
+ if(kind==='ex01'){matrix=[['Peça e grandeza','Leitura 1 [cm]','Leitura 2 [cm]','Leitura 3 [cm]','σ instrumental [cm]'],...EX01];settings={'instrument':'c5','rep-c5':false,'out-total':true};}else{matrix=[['Grandeza','L1 [m]','L2 [m]','L3 [m]'],['L','0,680','0,660','0,670']];settings={'instrument-value':'0,005','out-total':true};}
+ inputHistory.push(clone(state));state=fromMatrix(matrix);$('calculation').value='treatment';refresh(settings);message(kind==='ex01'?'Exemplo carregado. Clique em Calcular.':'Exemplo da apostila carregado. Clique em Calcular.');
+ }catch(e){message(e.message,true);}}
+$('example').onclick=()=>loadExample('ex01');
+$('other-example').onclick=()=>loadExample($('example-kind').value);
 function download(blob,name){const a=document.createElement('a'),url=URL.createObjectURL(blob);a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function exported(data){return data.rows.map(r=>r.map(v=>typeof v==='number'&&$('export-rounded').checked?P.number(shown(v)):v));}
 function csvText(data,separator=';'){return P.delimited(data.cols.map(heading),exported(data).map(r=>r.map(v=>typeof v==='number'?String(v).replace('.',','):/^[=+\-@\t\r]/.test(String(v))?"'"+v:v)),separator);}
@@ -134,4 +143,6 @@ $('save-session').onclick=()=>{const data={version:2,state,plan:{kind:$('calcula
 $('load-session').onclick=()=>$('session-file').click();
 $('session-file').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>5e6)throw Error('O limite é 5 MB.');const data=JSON.parse(await file.text());if(data.version!==2)throw Error('Sessão da versão anterior: importe a tabela CSV exportada naquela versão.');const next=validState(data.state);if(!meta[data.plan?.kind])throw Error('Configuração de cálculo inválida.');if(!confirm('Abrir esta sessão e substituir a entrada atual?'))return;inputHistory.push(clone(state));state=next;$('calculation').value=data.plan.kind;if(['significant','decimal'].includes(data.plan.format))$('format').value=data.plan.format;if(['2','3','4','5','6'].includes(data.plan.digits))$('digits').value=data.plan.digits;refresh(data.plan.settings||{});dirty=false;message('Sessão restaurada. Clique em Calcular tabela para gerar os resultados.');}catch(err){message(err.message,true);}e.target.value='';};
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
+$('common-unit').onchange=()=>{state.cols.slice(1).forEach(c=>c.unit=$('common-unit').value.trim());refresh();};
+$('edit-columns').onchange=()=>$('table').classList.toggle('editing',$('edit-columns').checked);
 inputTable();configure();

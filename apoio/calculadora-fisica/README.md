@@ -4,11 +4,13 @@ Aplicativo para transformar medidas em tabelas de resultados, seguindo o tratame
 
 ## Como usar
 
-1. Digite as medidas, importe CSV ou cole a tabela do Excel/Sheets, com cabeçalhos. Informe a unidade de cada coluna; também é aceito `t1 [s]` no cabeçalho importado.
-2. Escolha o cálculo da disciplina. Para leituras como t1, t2 e t3, selecione as colunas de repetições e marque os resultados desejados. Também é possível tratar repetições em uma coluna, gerando um resumo por coluna.
-3. Informe a incerteza instrumental quando o cálculo exigir. Pode ser um valor comum ou uma coluna com uma incerteza por linha. Ela não é deduzida da resolução do instrumento.
-4. Clique em **Calcular tabela**. A entrada e os resultados ficam separados. Uma alteração nas medidas ou na configuração invalida a saída até o próximo cálculo.
-5. Copie ou exporte os resultados em CSV/XLSX. Para continuar o tratamento, use a tabela calculada como entrada na próxima etapa. A tabela anterior permanece recuperável durante a sessão da aba.
+1. Preencha a tabela: um nome na primeira coluna e as leituras repetidas nas seguintes. Para testar, clique em **Usar exemplo do trabalho 1**.
+2. Marque os resultados: **média**, **DP**, **incerteza da média** ou **incerteza total**. As três primeiras opções já vêm selecionadas. A incerteza instrumental só é solicitada quando necessária.
+3. Clique em **Calcular** e depois em **Copiar tabela** ou **Baixar Excel**.
+
+A unidade comum fica abaixo da tabela. Colagem e importação, edição de colunas, resultados adicionais, organização das leituras, fórmulas e outros cálculos ficam em opções recolhidas. O exemplo do trabalho 01 configura a incerteza de cada peça automaticamente. Carregá-lo guarda a entrada anterior, recuperável em **Editar colunas e outras opções → Voltar à tabela anterior**.
+
+A tabela calculada só aparece depois do cálculo e é invalidada quando as medidas ou a configuração mudam. CSV, precisão de exibição e continuação em outra etapa ficam em **Mais opções do resultado**. A sessão pode ser salva e aberta no final da página.
 
 Vírgula e ponto decimal são aceitos. Para colar números com vírgula, separe as colunas com tabulação ou ponto e vírgula. Os cabeçalhos devem ser diferentes entre si. Limites: 10.000 linhas, 100 colunas, arquivos de 5 MB. Campos não numéricos podem identificar as linhas; colunas selecionadas para cálculo precisam conter números válidos. No resumo por coluna, células vazias são ignoradas e N registra a contagem utilizada.
 
@@ -41,7 +43,7 @@ Os cálculos mantêm a precisão completa até a apresentação. O seletor de pr
 
 **Apostila:** medidas 0,680, 0,660 e 0,670 m, com incerteza instrumental 0,005 m. Resultado apresentado: (0,670 ± 0,008) m.
 
-**Trabalho 01:** as 16 dimensões das quatro peças, com três leituras cada, foram conferidas na Tabela 1 do relatório final. Todas estão em centímetros. A coluna instrumental contém 0,001 cm para a bateria e 0,005 cm para arruela e peças com ressalto, conforme a metodologia do próprio relatório. O exemplo já seleciona somente as três leituras para calcular média, DP, incertezas e apresentação final. A segunda leitura de L é 1,31 cm. O trabalho 02 não aparece no seletor de exemplos.
+**Trabalho 01:** as 16 dimensões das quatro peças, com três leituras cada, foram conferidas na Tabela 1 do relatório final. Todas estão em centímetros. A coluna instrumental contém 0,001 cm para a bateria e 0,005 cm para arruela e peças com ressalto, conforme a metodologia do próprio relatório. O exemplo já seleciona somente as três leituras para calcular média, DP, incerteza da média e incerteza total. A segunda leitura de L é 1,31 cm. O trabalho 02 não aparece no seletor de exemplos.
 
 Salvar sessão guarda medidas e configuração em JSON versão 2. Ao abrir, o usuário recalcula a tabela. Não há salvamento automático. Sessões da antiga calculadora genérica não são carregadas nesta versão; seus dados podem ser importados pelo CSV exportado anteriormente. A cópia de tabelas anteriores permanece somente na aba aberta.
 
