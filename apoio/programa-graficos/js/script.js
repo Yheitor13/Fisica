@@ -95,6 +95,16 @@
   $('add-row').addEventListener('click', () => { try { addRow(); refreshCount(); changedData(); body.lastChild.querySelector('input').focus(); } catch (e) { status(e.message, 'error'); } });
   $('clear').addEventListener('click', () => { replaceData([['', '', '', '']]); });
   $('example').addEventListener('click', loadExample);
+  $('example-ex03').addEventListener('click', () => {
+    const view=$('ex03-view').value,z=window.EX03_DATA;
+    setRows(z[view==='curve'?'original':view]);isExample=false;
+    const info={original:['Queda livre — dados experimentais','Tempo médio t̄','s','Altura d','m'],log:['Queda livre — ajuste logarítmico','ln(d / 1 m)','','ln(t̄ / 1 s)',''],curve:['Queda livre — lei de potência livre','Tempo médio t̄','s','Altura d','m'],direct:['Queda livre — modelo pela origem','Tempo médio ao quadrado t̄²','s²','Altura d','m'],square:['Queda livre — diagnóstico com intercepto','Altura d','m','Tempo médio ao quadrado t̄²','s²']}[view];
+    ['title','x-label','x-unit','y-label','y-unit'].forEach((id,i)=>$(id).value=info[i]);
+    $('curve').checked=['curve','direct'].includes(view);
+    $('curve-c').value=view==='direct'?1/z.originA:z.C;$('curve-n').value=view==='direct'?1:z.n;$('curve-x0').value=1;
+    $('fit').checked=['log','square'].includes(view);$('method').value='weighted';methodHelp();markDirty();generate();
+  });
+
   ['title', 'x-label', 'x-unit', 'y-label', 'y-unit'].forEach(id => $(id).addEventListener('input', markDirty));
   ['curve', 'curve-c', 'curve-n', 'curve-x0'].forEach(id => $(id).addEventListener('input', markDirty));
   ['fit', 'method'].forEach(id => $(id).addEventListener('change', () => { methodHelp(); markDirty(); }));

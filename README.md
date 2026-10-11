@@ -4,6 +4,7 @@
 | --- | --- |
 | [Trabalho 01](FisicaEx01/) | Medidas, volumes e propagação de incertezas |
 | [Trabalho 02](FisicaEx02/) | Linearização |
+| [Trabalho 03](FisicaEx03/) | Queda livre — contas e gráficos; relatório a elaborar quando solicitado |
 
 **Programa de gráficos:** [Abrir a Calculadora de gráficos](https://yheitor13.github.io/Fisica/calculadora-de-grafico/)
 
@@ -35,3 +36,8 @@ O EX02 cita o EX01 como base do tratamento anterior à linearização: média, d
 Os três gráficos do EX02 foram produzidos na [Calculadora de gráficos](apoio/programa-graficos/), desenvolvida para esse trabalho e citada na metodologia e nas referências. O aplicativo permite inserir X, vX, Y e vY, exibir barras de incerteza, ajustar uma reta ou desenhar uma curva com parâmetros informados e exportar figuras. O [portal](apoio/portal/) oferece acesso geral aos dois trabalhos e aos materiais.
 
 Os nomes e caminhos internos de EX01 e EX02 foram preservados. A página inicial do GitHub Pages passou a ser o portal; a Calculadora de gráficos fica em `/calculadora-de-grafico/`. Atualizações enviadas para `main` publicam automaticamente a versão revisada dos documentos e das páginas.
+
+
+## Trabalho 03
+
+EX03: prática de 06/10/2026, 17 alturas e 51 tempos conferidos. [Planilha calculada](FisicaEx03/Tabela_Medidas_Calculadas.xlsx), [resolução](FisicaEx03/Resolucao_Completa.pdf) e [resultados](FisicaEx03/Resultados_Finais.pdf). As calculadoras incluem o tratamento de queda livre e cinco gráficos do EX03. O relatório aguarda solicitação expressa. O [guia do EX03](FisicaEx03/README.md) registra as hipóteses e as limitações dos ajustes.

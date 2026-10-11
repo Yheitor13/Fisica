@@ -1,0 +1,14 @@
+{
+  "status": "conferido",
+  "metodo": "NumPy least-squares independente a partir da planilha salva",
+  "pontos": 17,
+  "tempos": 51,
+  "checagens": [
+    "médias",
+    "DP e incertezas",
+    "coeficientes",
+    "covariâncias",
+    "qui-quadrado",
+    "g pelos dois métodos"
+  ]
+}

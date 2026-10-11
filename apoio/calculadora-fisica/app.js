@@ -5,6 +5,7 @@ const P=Physics,L=Lab,$=id=>document.getElementById(id),esc=s=>String(s??'').rep
 let state={cols:[{id:'c1',name:'Nome',unit:''},{id:'c2',name:'Medida 1',unit:''},{id:'c3',name:'Medida 2',unit:''},{id:'c4',name:'Medida 3',unit:''}],rows:[{c1:'',c2:'',c3:'',c4:''}],next:5},output=null,history=[],inputHistory=[],dirty=false;
 const clone=x=>JSON.parse(JSON.stringify(x));
 const meta={
+ freefall:['Queda livre — EX03','u(t̄) = √(s²/N + uinst²); u(t̄²) = 2t̄u(t̄)','Apostila, capítulos 2–5 e 12','Altura sem incerteza considerada. O ajuste ponderado usa ln(t) por ln(d) e t² por d. As estimativas com n = 2 e passagem pela origem são condicionais; confira χ² reduzido.'],
  treatment:['Média → DP → incerteza da média → incerteza total','x̄ = Σxᵢ/N; s = √[Σ(xᵢ−x̄)²/(N−1)]; σm = s/√N; σtotal = √(σm²+σinst²)','Apostila, equações 2.1–2.4, p. 9','Selecione as colunas de repetições e os resultados que deseja. A incerteza instrumental deve ser informada na mesma unidade das medidas.'],
  deviations:['Desvios individuais','dᵢ = xᵢ − x̄','Apostila, capítulo 2','Selecione uma coluna com leituras repetidas da mesma grandeza.'],
  total:['Combinação de incertezas','σtotal = √(σm² + σinst²)','Apostila, equação 2.4','A coluna estatística deve conter a incerteza da média, e não o DP das leituras.'],
@@ -32,6 +33,7 @@ function configure(saved={}){
  h+='<label>Organização das leituras<select id="layout"><option value="rows">Uma linha por grandeza</option><option value="columns">Uma coluna por grandeza</option></select></label><fieldset><legend>Colunas que entram no cálculo</legend><div class="choices">'+state.cols.map((c,i)=>`<label class="check"><input type="checkbox" id="rep-${c.id}" ${i>0?'checked':''}>${esc(c.name)}</label>`).join('')+'</div></fieldset>';
  if(saved.layout!=='columns')h+=selector('label-column','Coluna com o nome de cada linha',state.cols[0]?.id,'<option value="">Número da linha</option>');
  h+='</details><p id="measure-summary" class="help"></p>';
+ }else if(k==='freefall'){h=selector('height','Altura',state.cols[0]?.id)+'<label>Unidade da altura<select id="height-unit"><option value="cm">cm</option><option value="m">m</option></select></label>'+['time1','time2','time3'].map((id,i)=>selector(id,'Tempo '+(i+1)+' em segundos',state.cols[i+1]?.id)).join('')+field('time-instrument','Incerteza instrumental em segundos','0,0001')+'<p class="help">Use alturas sem incerteza considerada e três leituras em segundos. Os resultados de g saem em m/s².</p>';
  }else if(k==='deviations')h=selector('measure','Coluna de leituras',guess(/medida|t1/i,1));
  else if(k==='total')h=selector('statistical','Incerteza da média (σm)',guess(/incerteza da média/i,1))+sigma('instrument','Incerteza instrumental');
  else if(k==='relative')h=selector('measure','Valor da grandeza',guess(/média/i,1))+sigma('uncertainty','Incerteza absoluta');
@@ -72,6 +74,16 @@ function compute(){const k=$('calculation').value;let cols,rows,secondary,descri
  const one=(values,u,label)=>{const s=L.treatment(values,u);if(needsTwo&&s.n<2)throw Error('DP e incertezas estatísticas exigem pelo menos duas medidas.');return [label,...selected.map(([id])=>id==='relative'?L.relative(s.mean,s.total):id==='percent'?100*L.relative(s.mean,s.total):id==='report'?L.report(s.mean,s.total):s[id])];};
  rows=vertical?inputs.map(c=>{try{return one(state.rows.filter(r=>String(r[c.id]??'').trim()).map(r=>num(r,c)),needsU?uv('instrument',{}):null,c.name);}catch(e){throw Error(c.name+': '+e.message);}}):eachRow((r,i)=>one(inputs.map(c=>num(r,c)),needsU?uv('instrument',r):null,label?r[label.id]:i+1));
  description+=' · Repetições: '+inputs.map(c=>c.name).join(', ')+'.';
+ }else if(k==='freefall'){
+ const h=chosen('height'),ts=['time1','time2','time3'].map(chosen);
+ if(new Set([h.id,...ts.map(c=>c.id)]).size!==4)throw Error('Escolha quatro colunas distintas.');
+ if(ts.some(c=>c.unit&&c.unit!=='s'))throw Error('Converta os tempos para segundos.');
+ if(h.unit&&h.unit!==$('height-unit').value)throw Error('A unidade selecionada deve corresponder à coluna de altura.');
+ const f=FreeFall.analyze(eachRow(r=>[num(r,h)/($('height-unit').value==='cm'?100:1),...ts.map(c=>num(r,c))]),L.uncertainty($('time-instrument').value));
+ cols=[col('Altura','m'),col('Tempo médio','s'),col('DP','s'),col('Incerteza da média','s'),col('Incerteza total','s'),col('ln(d/1 m)'),col('ln(t̄/1 s)'),col('u ln(t̄)'),col('t̄²','s²'),col('u(t̄²)','s²')];
+ rows=f.rows.map(r=>[r.d,r.mean,r.s,r.sem,r.total,r.X,r.Y,r.uY,r.q,r.uq]);
+ secondary={cols:[col('Resultado'),col('Valor'),col('Incerteza formal'),col('Unidade'),col('χ² reduzido')],rows:[['Expoente n',f.power.n,f.power.un,'',f.log.reduced],['C da lei de potência',f.power.C,f.power.uC,'m',f.log.reduced],['g por ln com n = 2',f.logFixed.g,f.logFixed.ug,'m/s²',f.logFixed.reduced],['g por t² pela origem',f.squareOrigin.g,f.squareOrigin.ug,'m/s²',f.squareOrigin.reduced],['g por t² com intercepto livre',f.squareFree.g,f.squareFree.ug,'m/s²',f.squareFree.reduced],['Intercepto de t²',f.squareFree.b,f.squareFree.ub,'s²',f.squareFree.reduced]]};
+ description+=' · Ajustes inversos ponderados: altura sem incerteza considerada. C inclui a covariância dos coeficientes. n livre não define g constante. Incertezas formais sem reescala; χ² elevado indica inadequação do modelo ou das incertezas. O intercepto livre é diagnóstico, não corrige as medidas.';
  }else if(k==='deviations'){
  const c=chosen('measure'),points=state.rows.map((r,i)=>({r,i})).filter(({r})=>String(r[c.id]??'').trim()),values=points.map(({r})=>num(r,c)),s=P.statistics(values);
  cols=[col('Linha'),col('Medida',c.unit),col('Média',c.unit),col('Desvio',c.unit),col('Desvio absoluto',c.unit),col('Desvio ao quadrado',c.unit?c.unit+'²':'')];rows=points.map(({i},j)=>[i+1,values[j],s.mean,values[j]-s.mean,Math.abs(values[j]-s.mean),(values[j]-s.mean)**2]);
@@ -109,7 +121,7 @@ $('table').onclick=e=>{const t=e.target;if(t.dataset.deleteCol&&state.cols.lengt
 function shown(v){if(typeof v!=='number')return String(v??'');const d=Number($('digits').value);return ($('format').value==='decimal'?v.toFixed(d):v.toPrecision(d)).replace('.',',');}
 function heading(c){return c.name+(c.unit?' ['+c.unit+']':'');}
 function tableHTML(data){return '<thead><tr>'+data.cols.map(c=>'<th scope="col">'+esc(heading(c))+'</th>').join('')+'</tr></thead><tbody>'+data.rows.map(r=>'<tr>'+r.map((v,i)=>'<td>'+esc(['N','Linha','Graus de liberdade'].includes(data.cols[i].name)?String(v):shown(v))+'</td>').join('')+'</tr>').join('')+'</tbody>';}
-function showOutput(){if(!output){$('results').hidden=true;$('result-panel').hidden=true;return;}$('results').hidden=false;$('result-panel').hidden=false;$('result-description').textContent=output.title+' · '+output.description;$('result-table').innerHTML=tableHTML(output);$('secondary').innerHTML=output.secondary?'<h3>Coeficientes e qualidade do ajuste</h3><div class="table-wrap"><table>'+tableHTML(output.secondary)+'</table></div><button id="use-coefficients">Usar coeficientes para retornar à lei de potência →</button>':'';if(output.secondary)$('use-coefficients').onclick=()=>promote(output.secondary,true);$('secondary-csv').hidden=!output.secondary;$('undo').disabled=!history.length;}
+function showOutput(){if(!output){$('results').hidden=true;$('result-panel').hidden=true;return;}$('results').hidden=false;$('result-panel').hidden=false;$('result-description').textContent=output.title+' · '+output.description;$('result-table').innerHTML=tableHTML(output);$('secondary').innerHTML=output.secondary?'<h3>Coeficientes e qualidade do ajuste</h3><div class="table-wrap"><table>'+tableHTML(output.secondary)+'</table></div>'+($('calculation').value==='regression'?'<button id="use-coefficients">Usar coeficientes para retornar à lei de potência →</button>':'<p class="help">Incertezas formais, sem reescala. χ² reduzido elevado indica que o modelo ou as incertezas não explicam os resíduos. O ajuste com intercepto é diagnóstico; nenhuma medida foi corrigida.</p>'):'';if($('use-coefficients'))$('use-coefficients').onclick=()=>promote(output.secondary,true);$('secondary-csv').hidden=!output.secondary;$('undo').disabled=!history.length;}
 $('calculate').onclick=()=>{try{const next=compute();history.push(output);if(history.length>10)history.shift();output=next;showOutput();message('');$('result-panel').scrollIntoView({behavior:'smooth',block:'start'});}catch(e){message(e.message,true);$('status').scrollIntoView({behavior:'smooth',block:'center'});}};
 $('undo').onclick=()=>{if(history.length){output=history.pop();showOutput();$('undo').disabled=!history.length;message('Último cálculo desfeito.');}};
 $('format').onchange=showOutput;$('digits').onchange=showOutput;
@@ -126,8 +138,8 @@ function promote(data,power=false){if(!confirm('Usar os resultados como nova tab
 $('use-result').onclick=()=>output&&promote(output);
 $('restore-input').onclick=()=>{if(inputHistory.length&&confirm('Voltar à tabela anterior?')){state=inputHistory.pop();refresh({});}};
 function loadExample(kind){try{let matrix,settings;
- if(kind==='ex01'){matrix=[['Peça e grandeza','Leitura 1 [cm]','Leitura 2 [cm]','Leitura 3 [cm]','σ instrumental [cm]'],...EX01];settings={'instrument':'c5','rep-c5':false,'out-total':true};}else{matrix=[['Grandeza','L1 [m]','L2 [m]','L3 [m]'],['L','0,680','0,660','0,670']];settings={'instrument-value':'0,005','out-total':true};}
- inputHistory.push(clone(state));state=fromMatrix(matrix);$('calculation').value='treatment';refresh(settings);message(kind==='ex01'?'Exemplo carregado. Clique em Calcular.':'Exemplo da apostila carregado. Clique em Calcular.');
+ if(kind==='ex03'){matrix=[['Altura [cm]','t1 [s]','t2 [s]','t3 [s]'],...window.EX03_RAW];settings={};}else if(kind==='ex01'){matrix=[['Peça e grandeza','Leitura 1 [cm]','Leitura 2 [cm]','Leitura 3 [cm]','σ instrumental [cm]'],...EX01];settings={'instrument':'c5','rep-c5':false,'out-total':true};}else{matrix=[['Grandeza','L1 [m]','L2 [m]','L3 [m]'],['L','0,680','0,660','0,670']];settings={'instrument-value':'0,005','out-total':true};}
+ inputHistory.push(clone(state));state=fromMatrix(matrix);$('calculation').value=kind==='ex03'?'freefall':'treatment';refresh(settings);message('Exemplo carregado. Clique em Calcular.');
  }catch(e){message(e.message,true);}}
 $('example').onclick=()=>loadExample('ex01');
 $('other-example').onclick=()=>loadExample($('example-kind').value);

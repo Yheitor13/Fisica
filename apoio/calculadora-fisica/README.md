@@ -25,13 +25,13 @@ Vírgula e ponto decimal são aceitos. Para colar números com vírgula, separe 
 - Regressão linear ponderada por 1/σY²: tabela de pesos e produtos, valores ajustados e resíduos; tabela separada com a, σa, b, σb, χ², graus de liberdade e χ² reduzido.
 - Retorno da regressão em logaritmos naturais à lei y = C(x/xref)^n, com n = a, C = yref exp(b) e σC = Cσb.
 
-A interface não oferece um editor genérico de fórmulas. As leis dos experimentos posteriores da apostila e a propagação com covariâncias não estão automatizadas.
+A interface não oferece um editor genérico de fórmulas. As leis dos experimentos posteriores da apostila e a propagação geral com covariâncias não estão automatizadas; o retorno do ajuste inverso do EX03 inclui sua covariância.
 
 ## Fontes e hipóteses
 
 A [apostila](../referencias_gerais/Apostila_LAB1.pdf), equações 2.1–2.4, define média, DP com divisor N−1, incerteza estatística s/√N e combinação instrumental. As páginas 10–11 orientam a apresentação com um algarismo significativo na incerteza e o mesmo nível decimal no valor. A equação 3.1 fundamenta a propagação de primeira ordem para variáveis independentes. Os capítulos 4 e 5 e os slides 13 e 16 do [material da aula](../../FisicaEx02/refs/Aula3-PropagacaoLinearizacao.pdf) fundamentam linearização e regressão. Os modelos geométricos seguem o [relatório 01](../../FisicaEx01/Relatório_Final.pdf).
 
-O ajuste considera somente incertezas verticais positivas. Não utiliza σX nem reescala as incertezas dos coeficientes pelo χ² reduzido. Com dois pontos, o ajuste existe, mas χ² reduzido é indefinido. Não há estimativa automática de aceleração da gravidade.
+O ajuste considera somente incertezas verticais positivas. Não utiliza σX nem reescala as incertezas dos coeficientes pelo χ² reduzido. Com dois pontos, o ajuste existe, mas χ² reduzido é indefinido. O módulo EX03 estima g sob as hipóteses descritas abaixo.
 
 A propagação usa diferenciação automática e as expressões completas dos modelos, sem executar código digitado. Duas grandezas independentes não podem apontar para a mesma coluna. Grandezas derivadas que compartilham dados originais podem ser correlacionadas: não devem ser combinadas sob a hipótese de independência. O modelo de corte exige uma corda menor que o diâmetro da base e um corte que não atinja o ressalto ou o furo.
 
@@ -56,3 +56,12 @@ Salvar sessão guarda medidas e configuração em JSON versão 2. Ao abrir, o us
 - `engine.test.cjs` e `lab.test.cjs`: testes de matemática, validação e reprodução dos resultados do EX02. Executar `node --test apoio/calculadora-fisica/*.test.cjs`.
 
 O construtor `apoio/portal/build.cjs` inclui o aplicativo em `/calculadora-fisica/`; o fluxo do GitHub Pages testa e publica as alterações. A validação desta revisão também conferiu no navegador o fluxo completo do EX02, importação, exportação XLSX com precisão completa, recuperação de sessão, mensagens de erro e apresentação em celular.
+
+
+## Trabalho 03 — queda livre
+
+Em Editar colunas e outras opções, carregue Trabalho 3 e clique em Calcular. As 17 alturas e 51 tempos foram conferidos pelo usuário. O módulo converte cm para m, usa uinst = 0,0001 s e altura sem incerteza considerada. Também aceita outras tabelas com três tempos por altura.
+
+O ajuste livre usa ln(t/1 s) = a ln(d/1 m) + b, com pesos 1/[u(t)/t]². Retorna n = 1/a e C = exp(-b/a) m; uC inclui cov(a,b). Não identifica 2C com g quando n difere de 2. Para estimar g constante, compara o ajuste logarítmico com a = 1/2 imposto e t² = a₀d pela origem. O ajuste t² = ad+b é diagnóstico adicional, com g = 2/a. Mostra χ² reduzido e incertezas formais sem reescala. Incertezas altas de modelo não são corrigidas automaticamente.
+
+Fonte: capítulo 12 da apostila, propagação do capítulo 3 e regressão do capítulo 5. A inversão dos eixos adapta os pesos à hipótese de altura sem incerteza. O termo instrumental é combinado à incerteza da média, sem divisão adicional por √3.

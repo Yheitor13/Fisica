@@ -10,16 +10,16 @@ fs.writeFileSync(path.join(out,'.nojekyll'),'');
 const app=path.join(root,'apoio/programa-graficos');
 for(const name of ['index.html','favicon.svg','README.md','css','js','vendor','exemplos'])fs.cpSync(path.join(app,name),path.join(out,'calculadora-de-grafico',name),{recursive:true});
 const calculator=path.join(root,'apoio/calculadora-fisica');
-for(const name of ['index.html','style.css','engine.js','lab.js','app.js','xlsx.js','README.md'])copy(path.join(calculator,name),path.join(out,'calculadora-fisica',name));
+for(const name of ['index.html','style.css','engine.js','lab.js','freefall.js','ex03-data.js','app.js','xlsx.js','README.md'])copy(path.join(calculator,name),path.join(out,'calculadora-fisica',name));
 // Preserve previously shared URLs and the historical report reference.
 fs.mkdirSync(path.join(out,'graficolab'),{recursive:true});
 fs.writeFileSync(path.join(out,'graficolab','index.html'),`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=../calculadora-de-grafico/"><link rel="canonical" href="https://yheitor13.github.io/Fisica/calculadora-de-grafico/"><title>Calculadora de gráficos</title></head><body><a href="../calculadora-de-grafico/">Abrir calculadora de gráficos</a></body></html>`);
-for(const experiment of ['FisicaEx01','FisicaEx02']){
+for(const experiment of ['FisicaEx01','FisicaEx02','FisicaEx03']){
  for(const entry of fs.readdirSync(path.join(root,experiment),{withFileTypes:true})){
   if(entry.isFile()&&/\.(pdf|docx|xlsx)$/i.test(entry.name))copy(path.join(root,experiment,entry.name),path.join(out,experiment,entry.name));
  }
 }
-for(const file of ['FisicaEx01/refs/Trabalho_FG1.pdf','FisicaEx02/refs/medidas_fisicaEX02.xlsx','FisicaEx02/refs/Aula3-PropagacaoLinearizacao.pdf'])copy(path.join(root,file),path.join(out,file));
+for(const file of ['FisicaEx03/refs/medidas_fisicaEX03.xlsx','FisicaEx01/refs/Trabalho_FG1.pdf','FisicaEx02/refs/medidas_fisicaEX02.xlsx','FisicaEx02/refs/Aula3-PropagacaoLinearizacao.pdf'])copy(path.join(root,file),path.join(out,file));
 for(const file of fs.readdirSync(path.join(root,'apoio/referencias_gerais'))){
  if(file.endsWith('.pdf'))copy(path.join(root,'apoio/referencias_gerais',file),path.join(out,'materiais',file));
 }

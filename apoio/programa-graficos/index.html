@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script defer src="vendor/plotly-basic-3.6.0.min.js"></script>
   <script defer src="js/data.js"></script>
-  <script defer src="js/example.js"></script>
+  <script defer src="js/ex03-data.js"></script><script defer src="js/example.js"></script>
   <script defer src="js/graph.js"></script>
   <script defer src="js/script.js"></script>
 </head>
@@ -20,8 +20,8 @@
         <section class="panel">
           <div class="section-heading"><h2><span class="step">01</span> Dados experimentais</h2><span id="row-count" class="count"></span></div>
           <p class="help"><strong>vX e vY são incertezas absolutas</strong> de X e Y, nas mesmas unidades. Não representam velocidades.</p>
-          <div class="actions"><button id="import" type="button">Importar CSV</button><button id="example" type="button">Exemplo EX02</button><button id="clear" class="quiet" type="button">Limpar</button></div>
-          <label for="example-view">Gráfico do exemplo EX02</label><select id="example-view"><option value="linear">Dados linearizados</option><option value="original">Dados antes da linearização</option><option value="curve">Curva reconstruída na escala original</option></select>
+          <div class="actions"><button id="import" type="button">Importar CSV</button><button id="example" type="button">Exemplo EX02</button><button id="example-ex03" type="button">Exemplo EX03</button><button id="clear" class="quiet" type="button">Limpar</button></div>
+          <label for="ex03-view">Gráfico do EX03</label><select id="ex03-view"><option value="original">Altura por tempo médio</option><option value="log">ln(t) por ln(d) com ajuste</option><option value="curve">Lei de potência na escala original</option><option value="direct">Altura por t² — modelo pela origem</option><option value="square">t² por altura — intercepto livre</option></select><label for="example-view">Gráfico do exemplo EX02</label><select id="example-view"><option value="linear">Dados linearizados</option><option value="original">Dados antes da linearização</option><option value="curve">Curva reconstruída na escala original</option></select>
           <input id="file" type="file" accept=".csv,.tsv,.txt,text/csv" hidden>
           <div class="table-wrap"><table><caption class="sr-only">Digite os valores ou cole quatro colunas de uma planilha: X, vX, Y, vY.</caption><thead><tr><th scope="col">#</th><th scope="col">X</th><th scope="col">vX <span>±</span></th><th scope="col">Y</th><th scope="col">vY <span>±</span></th><th scope="col"><span class="sr-only">Excluir linha</span></th></tr></thead><tbody id="rows"></tbody></table></div>
           <div class="table-footer"><button id="add-row" class="quiet" type="button">+ Adicionar linha</button><button id="save-data" class="quiet" type="button">Salvar CSV ↓</button></div>

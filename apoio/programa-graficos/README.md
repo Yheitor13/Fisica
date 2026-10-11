@@ -106,3 +106,8 @@ Os gráficos do relatório foram exportados pela interface em PNG e SVG. As vers
 A reprodução gráfica não recalcula as incertezas dos coeficientes, qui-quadrado ou propagação: esses resultados continuam documentados no relatório. Fotografias, equações e tabelas do relatório são independentes do aplicativo.
 
 [Voltar ao portal de Física Experimental](https://yheitor13.github.io/Fisica/)
+
+
+## EX03
+
+Selecione o gráfico do EX03 e clique em Exemplo EX03. Os dados provêm da planilha conferida; não são recalculados a partir de fotografias. Há cinco visualizações: altura por tempo, ln(t) por ln(d), curva de potência livre, altura por t² com a reta pela origem e t² por altura com intercepto livre. A inversão dos eixos nos ajustes ponderados coloca a incerteza do tempo no eixo vertical. A altura não tem incerteza considerada. Os exemplos têm parâmetros previamente calculados; o ajuste livre é recalculado pela ferramenta. Para novos dados use o módulo Queda livre da calculadora e importe a tabela X, vX, Y, vY apropriada. Os valores de g são condicionais e o desvio dos modelos está documentado no EX03.
