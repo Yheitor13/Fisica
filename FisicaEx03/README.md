@@ -4,10 +4,12 @@
 
 ## Estado do trabalho
 
-Medidas conferidas pelo usuário, contas e gráficos concluídos. **Não elaborar o relatório até o usuário pedir.**
+Medidas conferidas pelo usuário, contas, gráficos e relatório final concluídos. O relatório segue a estrutura dos trabalhos 01 e 02, com 17 páginas, cinco tabelas e cinco gráficos.
 
 ## Arquivos
 
+- [Relatório final (PDF)](Relatorio_Final.pdf): versão de leitura e entrega.
+- [Relatório final (Word)](Relatorio_Final.docx): versão editável.
 - [Resolução completa](Resolucao_Completa.pdf): fórmulas, substituições, tabelas, somatórios, ajustes e interpretação das incertezas.
 - [Resultados dos cálculos](Resultados_Finais.pdf): resumo numérico e limitações.
 - [Medidas originais](Tabela_Medidas_Originais.xlsx): apresentação da tabela conferida.
@@ -15,6 +17,8 @@ Medidas conferidas pelo usuário, contas e gráficos concluídos. **Não elabora
 - [Fonte editável](refs/medidas_fisicaEX03.xlsx): ler sempre a versão salva antes de nova análise.
 - Cinco PDFs de gráficos na raiz; PNG e SVG em [tmp/graficos](tmp/graficos/).
 - [Apostila](../apoio/referencias_gerais/Apostila_LAB1.pdf): pp. 54–58 do capítulo 12.
+
+O relatório contém capa, folha de rosto, resumo, listas e sumário, fundamentação, metodologia, resultados e discussão, conclusão e referências. A montagem é descrita conforme o roteiro; as fotografias fornecidas registram apenas as anotações de medidas, não o aparelho.
 
 ## Medidas e incertezas
 
