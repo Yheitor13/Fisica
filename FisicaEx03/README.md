@@ -4,7 +4,7 @@
 
 ## Estado do trabalho
 
-Medidas conferidas pelo usuário, contas, gráficos e relatório final concluídos. O relatório segue a estrutura dos trabalhos 01 e 02, com 19 páginas, cinco tabelas, cinco gráficos e três fotografias.
+Medidas conferidas pelo usuário, contas, gráficos e relatório final concluídos. O relatório segue a estrutura dos trabalhos 01 e 02, com 17 páginas, cinco tabelas, cinco gráficos e três fotografias. As fotos estão reunidas na Metodologia, com duas lado a lado; formatação, sumário e listas foram revisados.
 
 ## Arquivos
 
