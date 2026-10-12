@@ -1,6 +1,6 @@
 # Física Geral Experimental I — Trabalho 03
 
-**Queda livre**, capítulo 12 da apostila. Experimento de **06/10/2026**. Participantes confirmados: Heitor Yochida de Ávila (12612ETE002), Sofia Skolimoski (12621ETE001) e Tiago de Almeida Raile (12621EAU003).
+**Queda livre**, capítulo 12 da apostila. Experimento de **06/10/2026**. Participantes confirmados: Heitor Yochida de Ávila (12612ETE002) e Jonathan Alves de Freitas das Neves Souza (12621ETE007).
 
 ## Estado do trabalho
 
