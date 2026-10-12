@@ -16,7 +16,7 @@ Medidas conferidas pelo usuário, contas, gráficos e relatório final concluíd
 - [Planilha calculada](Tabela_Medidas_Calculadas.xlsx): fórmulas editáveis, com Resultados, Tratamento, Logaritmos e Quadrados.
 - [Fonte editável](refs/medidas_fisicaEX03.xlsx): ler sempre a versão salva antes de nova análise.
 - Cinco PDFs de gráficos na raiz; PNG e SVG em [tmp/graficos](tmp/graficos/).
-- [Fotografias originais](refs/Fotos/): duas folhas de medidas e cinco imagens da montagem; três imagens da montagem aparecem no Apêndice A do relatório.
+- [Fotografias originais](refs/Fotos/): duas folhas de medidas e cinco imagens da montagem; três imagens da montagem aparecem na seção 3.1 (Metodologia) do relatório.
 - [Apostila](../apoio/referencias_gerais/Apostila_LAB1.pdf): pp. 54–58 do capítulo 12.
 
 O relatório contém capa, folha de rosto, resumo, listas e sumário, fundamentação, metodologia, resultados e discussão, conclusão e referências. A montagem é descrita conforme o roteiro e documentada pelas novas fotografias fornecidas pelo grupo. As imagens não demonstram calibração ou ajustes não registrados.
