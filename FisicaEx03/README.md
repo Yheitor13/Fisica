@@ -4,7 +4,7 @@
 
 ## Estado do trabalho
 
-Medidas conferidas pelo usuário, contas, gráficos e relatório final concluídos. O relatório segue a estrutura dos trabalhos 01 e 02, com 17 páginas, cinco tabelas e cinco gráficos.
+Medidas conferidas pelo usuário, contas, gráficos e relatório final concluídos. O relatório segue a estrutura dos trabalhos 01 e 02, com 19 páginas, cinco tabelas, cinco gráficos e três fotografias.
 
 ## Arquivos
 
@@ -16,9 +16,10 @@ Medidas conferidas pelo usuário, contas, gráficos e relatório final concluíd
 - [Planilha calculada](Tabela_Medidas_Calculadas.xlsx): fórmulas editáveis, com Resultados, Tratamento, Logaritmos e Quadrados.
 - [Fonte editável](refs/medidas_fisicaEX03.xlsx): ler sempre a versão salva antes de nova análise.
 - Cinco PDFs de gráficos na raiz; PNG e SVG em [tmp/graficos](tmp/graficos/).
+- [Fotografias originais](refs/Fotos/): duas folhas de medidas e cinco imagens da montagem; três imagens da montagem aparecem no Apêndice A do relatório.
 - [Apostila](../apoio/referencias_gerais/Apostila_LAB1.pdf): pp. 54–58 do capítulo 12.
 
-O relatório contém capa, folha de rosto, resumo, listas e sumário, fundamentação, metodologia, resultados e discussão, conclusão e referências. A montagem é descrita conforme o roteiro; as fotografias fornecidas registram apenas as anotações de medidas, não o aparelho.
+O relatório contém capa, folha de rosto, resumo, listas e sumário, fundamentação, metodologia, resultados e discussão, conclusão e referências. A montagem é descrita conforme o roteiro e documentada pelas novas fotografias fornecidas pelo grupo. As imagens não demonstram calibração ou ajustes não registrados.
 
 ## Medidas e incertezas
 
@@ -43,4 +44,4 @@ O roteiro pede gráficos d por t e d por t²; ambos são fornecidos, além dos g
 
 A [Calculadora de Física](../apoio/calculadora-fisica/) inclui Queda livre — EX03. A [Calculadora de gráficos](../apoio/programa-graficos/) inclui cinco exemplos EX03; as figuras foram exportadas por ela em 3600 × 2400 pixels e SVG. As tabelas X, vX, Y, vY ficam em tmp.
 
-Conferência independente por NumPy a partir da fonte salva: [registro](tmp/verificacao_independente.json). A planilha de fórmulas, o módulo JavaScript e a verificação independente concordam. Os scripts de reprodução ficam em tmp; as fotografias das anotações, em refs/Fotos. Não há fotografias da montagem fornecidas até esta etapa.
+Conferência independente por NumPy a partir da fonte salva: [registro](tmp/verificacao_independente.json). A planilha de fórmulas, o módulo JavaScript e a verificação independente concordam. Os scripts de reprodução ficam em tmp; as fotografias das anotações, em refs/Fotos. As cinco fotografias da montagem estão preservadas em refs/Fotos; as vistas 01, 04 e 02 foram selecionadas para o relatório.
