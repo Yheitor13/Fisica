@@ -4,7 +4,7 @@
 | --- | --- |
 | [Trabalho 01](FisicaEx01/) | Medidas, volumes e propagação de incertezas |
 | [Trabalho 02](FisicaEx02/) | Linearização |
-| [Trabalho 03](FisicaEx03/) | Queda livre — [relatório final](FisicaEx03/Relatorio_Final.pdf), contas e gráficos |
+| [Trabalho 03](FisicaEx03/) | Queda livre |
 
 **Programa de gráficos:** [Abrir a Calculadora de gráficos](https://yheitor13.github.io/Fisica/calculadora-de-grafico/)
 
