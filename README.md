@@ -5,6 +5,7 @@
 | [Trabalho 01](FisicaEx01/) | Medidas, volumes e propagação de incertezas |
 | [Trabalho 02](FisicaEx02/) | Linearização |
 | [Trabalho 03](FisicaEx03/) | Queda livre |
+| [Trabalho 04](FisicaEx04/) | Movimento de um projétil em duas dimensões |
 
 **Programa de gráficos:** [Abrir a Calculadora de gráficos](https://yheitor13.github.io/Fisica/calculadora-de-grafico/)
 
@@ -41,3 +42,8 @@ Os nomes e caminhos internos de EX01 e EX02 foram preservados. A página inicial
 ## Trabalho 03
 
 EX03: prática de 06/10/2026, 17 alturas e 51 tempos conferidos. [Relatório final](FisicaEx03/Relatorio_Final.pdf) e [versão editável](FisicaEx03/Relatorio_Final.docx), [planilha calculada](FisicaEx03/Tabela_Medidas_Calculadas.xlsx), [resolução](FisicaEx03/Resolucao_Completa.pdf) e [resultados](FisicaEx03/Resultados_Finais.pdf). As calculadoras incluem o tratamento de queda livre e cinco gráficos do EX03. O [guia do EX03](FisicaEx03/README.md) registra as hipóteses e as limitações dos ajustes.
+
+
+## Trabalho 04
+
+EX04: capítulo 13, lançamento horizontal. [Relatório em PDF](FisicaEx04/Relatorio_Final.pdf), [Word](FisicaEx04/Relatorio_Final.docx), [planilhas e gráficos](FisicaEx04/). Medidas de 17/10/2026 conferidas; o [guia do EX04](FisicaEx04/README.md) descreve os modelos, as limitações de incerteza e as pendências experimentais.
