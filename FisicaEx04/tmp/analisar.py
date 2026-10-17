@@ -36,7 +36,7 @@ DISPLAY = [
     ("40","32,7","36,7","40,15"),
     ("45","48,6","49,35","53,0"),
     ("50","63,35","64,4","67,35"),
-    ("55","81,7","No ch�o","No ch�o"),
+    ("55","81,7","No chão","No chão"),
 ]
 with (OUT / "refs" / "medidas_confirmadas.csv").open("w", encoding="utf-8-sig", newline="") as f:
     w = csv.writer(f, delimiter=";")
@@ -54,7 +54,7 @@ for x, *ys in RAW:
                      ln_x=math.log(x/100), ln_y=math.log(mean/100),
                      x2_m2=(x/100)**2))
 
-# Apenas linhas com pelo menos 3 lan�amentos completos entram nos ajustes.
+# Apenas linhas com pelo menos 3 lançamentos completos entram nos ajustes.
 fitrows = rows[:10]
 X = np.array([r["x_m"] for r in fitrows])
 Y = np.array([r["mean_m"] for r in fitrows])
@@ -89,16 +89,16 @@ def velocity(A,uA):
     v=math.sqrt(g/(2*A))
     return dict(A_per_m=A,u_A_per_m=uA,v0_m_s=v,u_v0_fit_m_s=v*uA/(2*A))
 res={
-    "source":"Tabela confirmada pelo usu�rio em 17/10/2026; x e y em cm.",
+    "source":"Tabela confirmada pelo usuário em 17/10/2026; x e y em cm.",
     "g_assumed_m_s2":g,
-    "instrumental_uncertainty":"N�o informada; u_stat � apenas a incerteza estat�stica da m�dia.",
+    "instrumental_uncertainty":"Não informada; u_stat é apenas a incerteza estatística da média.",
     "rows":rows,
     "model_log_free":{**logfree,"n":logfree["slope"],"u_n":logfree["slope_se"]},
     "model_log_n2":{"intercept":b_fixed,"intercept_se":se_b,"rss":float(res_fixed@res_fixed),
                     "velocity":velocity(math.exp(b_fixed),math.exp(b_fixed)*se_b)},
     "model_square_origin":{**direct,"velocity":velocity(direct["slope"],direct["slope_se"])},
     "model_square_intercept":{**diagnostic,"velocity_slope_only":velocity(diagnostic["slope"],diagnostic["slope_se"])},
-    "excluded_from_fits":"x=55 cm: s� y1=81,7 cm; y2 e y3 anotados como No ch�o.",
+    "excluded_from_fits":"x=55 cm: só y1=81,7 cm; y2 e y3 anotados como No chão.",
 }
 (TMP / "calculos_verificados.json").write_text(json.dumps(res,ensure_ascii=False,indent=2,allow_nan=False),encoding="utf-8")
 with (TMP / "tratamento.csv").open("w",encoding="utf-8-sig",newline="") as f:
@@ -152,14 +152,14 @@ def graph(name,title,xlabel,ylabel,points,curves,xlim,ylim,excluded=None):
     c.save()
 
 points=[(r["x_m"],r["mean_m"],r["u_stat_cm"]/100) for r in fitrows]
-graph("01_Trajetoria","Trajet�ria medida","x (m)","y (m)",points,
-      [("#2f7d69","modelo quadr�tico",lambda x:direct["slope"]*x*x)],(0,.58),(0,.90),(.55,.817))
-graph("02_Linearizacao_Quadratica","Lineariza��o quadr�tica","x� (m�)","y (m)",
+graph("01_Trajetoria","Trajetória medida","x (m)","y (m)",points,
+      [("#2f7d69","modelo quadrático",lambda x:direct["slope"]*x*x)],(0,.58),(0,.90),(.55,.817))
+graph("02_Linearizacao_Quadratica","Linearização quadrática","x² (m²)","y (m)",
       [(x*x,y,u) for x,y,u in points],
       [("#2f7d69","pela origem",lambda z:direct["slope"]*z),
        ("#ad6127","intercepto livre",lambda z:diagnostic["slope"]*z+diagnostic["intercept"])],
       (0,.27),(0,.78))
-graph("03_Linearizacao_Logaritmica","Lineariza��o logar�tmica","ln(x / 1 m)","ln(y / 1 m)",
+graph("03_Linearizacao_Logaritmica","Linearização logarítmica","ln(x / 1 m)","ln(y / 1 m)",
       [(math.log(x),math.log(y),None) for x,y,u in points],
       [("#2f7d69","expoente livre",lambda x:logfree["slope"]*x+logfree["intercept"]),
        ("#ad6127","expoente 2",lambda x:2*x+b_fixed)],

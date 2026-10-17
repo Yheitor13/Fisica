@@ -1,7 +1,7 @@
 {
-  "source": "Tabela confirmada pelo usu�rio em 17/10/2026; x e y em cm.",
+  "source": "Tabela confirmada pelo usuário em 17/10/2026; x e y em cm.",
   "g_assumed_m_s2": 9.79,
-  "instrumental_uncertainty": "N�o informada; u_stat � apenas a incerteza estat�stica da m�dia.",
+  "instrumental_uncertainty": "Não informada; u_stat é apenas a incerteza estatística da média.",
   "rows": [
     {
       "x_cm": 5,
@@ -275,5 +275,5 @@
       "u_v0_fit_m_s": 0.01670957827259931
     }
   },
-  "excluded_from_fits": "x=55 cm: s� y1=81,7 cm; y2 e y3 anotados como No ch�o."
+  "excluded_from_fits": "x=55 cm: só y1=81,7 cm; y2 e y3 anotados como No chão."
 }

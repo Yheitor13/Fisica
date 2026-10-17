@@ -7,7 +7,7 @@ const raw=[
   [20,8.7,9.05,9.4],[25,13.05,13.2,13.8],[30,18.8,20.1,20.7],
   [35,28.6,29.15,29.95],[40,32.7,36.7,40.15],
   [45,48.6,49.35,53.0],[50,63.35,64.4,67.35],
-  [55,81.7,"No ch�o","No ch�o"]
+  [55,81.7,"No chão","No chão"]
 ];
 const calc=JSON.parse(fs.readFileSync(path.join(root,"tmp","calculos_verificados.json"),"utf8"));
 function baseSheet(book,name,headers,data){
@@ -25,8 +25,8 @@ function baseSheet(book,name,headers,data){
   const original=Workbook.create();
   const o=baseSheet(original,"Medidas",["x (cm)","y1 (cm)","y2 (cm)","y3 (cm)"],raw);
   o.getRange("F1").values=[["Fonte"]];
-  o.getRange("F2").values=[["Transcri��o confirmada em 17/10/2026"]];
-  o.getRange("F3").values=[["No ch�o � observa��o, n�o valor num�rico"]];
+  o.getRange("F2").values=[["Transcrição confirmada em 17/10/2026"]];
+  o.getRange("F3").values=[["No chão é observação, não valor numérico"]];
   o.getRange("F:F").format.columnWidth=45;
   original.recalculate();
   const origCheck=await original.inspect({kind:"table",range:"Medidas!A1:D12",include:"values",tableMaxRows:12,tableMaxCols:4});
@@ -41,7 +41,7 @@ function baseSheet(book,name,headers,data){
   const source=baseSheet(book,"Medidas",["x (cm)","y1 (cm)","y2 (cm)","y3 (cm)"],raw);
   const tr=book.worksheets.add("Tratamento");
   tr.showGridLines=false;
-  tr.getRange("A1:J1").values=[["x (cm)","n","y m�dio (cm)","s (cm)","u estat. (cm)","x (m)","y m�dio (m)","x� (m�)","ln(x/1 m)","ln(y/1 m)"]];
+  tr.getRange("A1:J1").values=[["x (cm)","n","y médio (cm)","s (cm)","u estat. (cm)","x (m)","y médio (m)","x² (m²)","ln(x/1 m)","ln(y/1 m)"]];
   for(let i=2;i<=12;i++){
     const rawrow=i;
     tr.getRange("A"+i).formulas=[["=Medidas!A"+rawrow]];
@@ -51,7 +51,7 @@ function baseSheet(book,name,headers,data){
       tr.getRange("D"+i).formulas=[["=SQRT(((Medidas!B"+rawrow+"-C"+i+")^2+(Medidas!C"+rawrow+"-C"+i+")^2+(Medidas!D"+rawrow+"-C"+i+")^2)/2)"]];
       tr.getRange("E"+i).formulas=[["=D"+i+"/SQRT(3)"]];
     }else{
-      tr.getRange("D"+i+":E"+i).values=[["sem repeti��o","sem repeti��o"]];
+      tr.getRange("D"+i+":E"+i).values=[["sem repetição","sem repetição"]];
     }
     tr.getRange("F"+i+":J"+i).formulas=[["=A"+i+"/100","=C"+i+"/100","=F"+i+"^2","=LN(F"+i+")","=LN(G"+i+")"]];
   }
@@ -61,17 +61,17 @@ function baseSheet(book,name,headers,data){
   tr.freezePanes.freezeRows(1);
   tr.getRange("C2:J12").setNumberFormat("0.000000");
   results.showGridLines=false;
-  results.getRange("A1").values=[["Cap�tulo 13  Movimento de um proj�til"]];
+  results.getRange("A1").values=[["Capítulo 13  Movimento de um projétil"]];
   results.getRange("A3:B3").values=[["Grandeza","Resultado"]];
-  results.getRange("A4:A11").values=[["n livre"],["A por y = Ax�, m^-1"],["v0 por y = Ax�, m/s"],["A por log n=2, m^-1"],["v0 por log n=2, m/s"],["g assumido, m/s�"],["N de posi��es ajustadas"],["x=55 cm"]];
+  results.getRange("A4:A11").values=[["n livre"],["A por y = Ax², m^-1"],["v0 por y = Ax², m/s"],["A por log n=2, m^-1"],["v0 por log n=2, m/s"],["g assumido, m/s²"],["N de posições ajustadas"],["x=55 cm"]];
   results.getRange("B4").formulas=[["=SLOPE(Tratamento!J2:J11,Tratamento!I2:I11)"]];
   results.getRange("B5").formulas=[["=SUMPRODUCT(Tratamento!H2:H11,Tratamento!G2:G11)/SUMSQ(Tratamento!H2:H11)"]];
   results.getRange("B6").formulas=[["=SQRT(B9/(2*B5))"]];
   results.getRange("B7").formulas=[["=EXP(AVERAGE(Tratamento!J2:J11)-2*AVERAGE(Tratamento!I2:I11))"]];
   results.getRange("B8").formulas=[["=SQRT(B9/(2*B7))"]];
-  results.getRange("B9:B11").values=[[9.79],[10],["1 medida; 2 vezes no ch�o"]];
-  results.getRange("A13").values=[["Os valores de velocidade dependem do modelo quadr�tico."]];
-  results.getRange("A14").values=[["Incerteza instrumental de x e y ainda n�o informada."]];
+  results.getRange("B9:B11").values=[[9.79],[10],["1 medida; 2 vezes no chão"]];
+  results.getRange("A13").values=[["Os valores de velocidade dependem do modelo quadrático."]];
+  results.getRange("A14").values=[["Incerteza instrumental de x e y ainda não informada."]];
   results.getRange("A:A").format.columnWidth=45;
   results.getRange("B:B").format.columnWidth=30;
   results.getRange("A3:B11").format.borders={preset:"all",style:"thin",color:"#D9D9D9"};
