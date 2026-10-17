@@ -1,6 +1,6 @@
 # Portal de Física Experimental
 
-Página simples de acesso aos dois trabalhos, aos materiais de consulta e à Calculadora de gráficos.
+Página simples de acesso aos trabalhos EX01 a EX04, aos materiais de consulta e à Calculadora de gráficos.
 
 - Portal: https://yheitor13.github.io/Fisica/
 - Calculadora de gráficos: https://yheitor13.github.io/Fisica/calculadora-de-grafico/
