@@ -2,7 +2,7 @@ name: Publicar portal de Física
 on:
   push:
     branches: [main]
-    paths: ['apoio/**', 'FisicaEx01/**', 'FisicaEx02/**', 'FisicaEx03/**', '.github/workflows/pages.yml']
+    paths: ['apoio/**', 'FisicaEx01/**', 'FisicaEx02/**', 'FisicaEx03/**', 'FisicaEx04/**', '.github/workflows/pages.yml']
   workflow_dispatch:
 permissions:
   contents: read
