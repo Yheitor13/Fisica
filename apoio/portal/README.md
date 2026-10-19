@@ -1,22 +1,29 @@
-# Portal de Física Experimental
+# Site dos trabalhos de Física
 
-Página simples de acesso aos dois trabalhos, aos materiais de consulta e à Calculadora de gráficos.
+[Site publicado](https://yheitor13.github.io/Fisica/)
 
-- Portal: https://yheitor13.github.io/Fisica/
-- Calculadora de gráficos: https://yheitor13.github.io/Fisica/calculadora-de-grafico/
-- Os READMEs e os arquivos completos permanecem disponíveis no GitHub.
+## Conteúdo e navegação
 
-O portal é HTML e CSS, sem dependências, cadastro ou processamento remoto. Os relatórios e gráficos PDF abrem diretamente no navegador. Word e planilhas são oferecidos para download. Fotografias e materiais de desenvolvimento são acessíveis pelos links do repositório, sem duplicá-los na publicação.
+- Quatro relatórios com acesso direto ao PDF.
+- Contas e fórmulas recolhidas dentro do cartão de cada trabalho.
+- Duas calculadoras: Física Experimental e gráficos.
+- Apostila e materiais de consulta.
+
+Planilhas, Word, fotos e figuras avulsas ficam acessíveis no repositório, sem ocupar a página inicial. Endereços de documentos publicados anteriormente permanecem compatíveis. Os arquivos originais dos experimentos não são movidos pelo construtor.
+
+## Aparência e acessibilidade
+
+HTML e CSS sem dependências externas. Layout em duas colunas no computador e uma no celular, navegação sem menu escondido, títulos hierárquicos, link de salto para o conteúdo, foco visível e controles com área de toque confortável. Os links abrem na mesma aba para manter a navegação previsível. O desenho da trajetória é decorativo.
+
+Referências de projeto: [layout responsivo GOV.UK](https://design-system.service.gov.uk/styles/layout/) e [estrutura de página W3C](https://www.w3.org/WAI/tutorials/page-structure/).
 
 ## Publicação
 
-O fluxo `.github/workflows/pages.yml` testa a Calculadora de gráficos e executa `node apoio/portal/build.cjs`. O construtor monta `.pages/` com o portal, o programa em `calculadora-de-grafico/`, os documentos finais e os PDFs de apoio. Verifica todos os links locais do portal antes de publicar. `.pages/` é apenas uma cópia de publicação e não deve entrar no Git.
-
-Para conferir localmente, na raiz do repositório:
+O workflow `.github/workflows/pages.yml` testa as duas calculadoras, monta o site e publica no GitHub Pages. Inclui EX01 a EX04. Para conferir localmente:
 
 ```sh
 node apoio/portal/build.cjs
 python -m http.server 8080 --directory .pages
 ```
 
-Abra http://localhost:8080. Também é possível abrir `.pages/index.html` diretamente, sem servidor. Para atualizar links ou textos, edite `index.html`; para alterar a aparência, edite `style.css`. Os caminhos de EX01 e EX02 mantêm os nomes históricos dos arquivos.
+O construtor verifica os links locais da página. `.pages/` é gerada e ignorada pelo Git. Edite `index.html` para conteúdo e `style.css` para apresentação.

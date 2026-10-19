@@ -1,43 +1,48 @@
-# Física — trabalhos experimentais
+# Física Experimental — trabalhos e materiais
 
-| Projeto | Conteúdo |
-| --- | --- |
-| [Trabalho 01](FisicaEx01/) | Medidas, volumes e propagação de incertezas |
-| [Trabalho 02](FisicaEx02/) | Linearização |
-| [Trabalho 03](FisicaEx03/) | Queda livre |
+Relatórios de Física Geral Experimental I, Universidade Federal de Uberlândia.
 
-**Programa de gráficos:** [Abrir a Calculadora de gráficos](https://yheitor13.github.io/Fisica/calculadora-de-grafico/)
+**[Abrir o site dos trabalhos](https://yheitor13.github.io/Fisica/)**
 
-**Tabela experimental e cálculos:** [Abrir a Calculadora de Física Experimental](https://yheitor13.github.io/Fisica/calculadora-fisica/) — preencha as medidas, marque média/DP/incertezas e calcule. Copie a tabela ou baixe no Excel; volumes, linearização e regressão ficam em opções recolhidas. Métodos conferidos com a apostila e os relatórios; exemplo com as medidas do trabalho 01.
+## Relatórios e contas
 
-**Site dos trabalhos:** [Abrir e compartilhar o índice de Física](https://yheitor13.github.io/Fisica/)
+| Trabalho | Experimento | Relatório | Contas |
+| --- | --- | --- | --- |
+| [EX01](FisicaEx01/) | Medidas, volumes e incertezas | [PDF](FisicaEx01/Relatório_Final.pdf) | [Resolução](FisicaEx01/Resolucao.pdf.pdf) |
+| [EX02](FisicaEx02/) | Linearização | [PDF](FisicaEx02/Relatorio_Final.pdf) | [Resolução](FisicaEx02/Resolucao_Completa.pdf) |
+| [EX03](FisicaEx03/) | Queda livre | [PDF](FisicaEx03/Relatorio_Final.pdf) | [Resolução](FisicaEx03/Resolucao_Completa.pdf) |
+| [EX04](FisicaEx04/) | Movimento de um projétil em duas dimensões | [PDF](FisicaEx04/Relatorio_Final.pdf) | [Resolução](FisicaEx04/Resolucao_Completa.pdf) |
 
-Acesse cada trabalho para consultar relatórios, cálculos, planilhas, gráficos e materiais do experimento.
+## Calculadoras
 
-## Organização
+- [Calculadora de Física Experimental](https://yheitor13.github.io/Fisica/calculadora-fisica/) — médias, desvio padrão, incertezas e tratamento de medidas.
+- [Calculadora de gráficos](https://yheitor13.github.io/Fisica/calculadora-de-grafico/) — barras de incerteza, ajustes e exportação de gráficos.
+
+## Organização das pastas
 
 ```text
-UFU/
-└── Física Experimental/
-    ├── apoio/
-    │   ├── referencias_gerais/
-    │   ├── programa-graficos/
-    │   └── portal/
-    ├── FisicaEx01/
-    └── FisicaEx02/
+Física Experimental/
+├── FisicaEx01/             Relatório, contas e arquivos do EX01
+├── FisicaEx02/             Relatório, contas e arquivos do EX02
+├── FisicaEx03/             Relatório, contas e arquivos do EX03
+├── FisicaEx04/             Relatório, contas e arquivos do EX04
+│   ├── graficos/           Figuras em PDF e PNG
+│   ├── memoria_calculos/  Dados confirmados e reprodução dos cálculos
+│   └── refs/               Scan e registro das medidas
+└── apoio/
+    ├── referencias_gerais/ Apostila, aulas e orientações
+    ├── calculadora-fisica/ Calculadora de medidas e incertezas
+    ├── programa-graficos/  Calculadora de gráficos
+    └── portal/             Site dos trabalhos
 ```
 
-Cada exercício mantém os documentos finais na raiz, fontes em `refs/` e registros de desenvolvimento em `tmp/`. A pasta [apoio](apoio/) reúne os materiais compartilhados e o código das páginas. Os arquivos de apoio são conservados para consulta e reprodução; para ler ou entregar um trabalho, comece pelo relatório final. Os arquivos técnicos do Git e da publicação permanecem na raiz do repositório.
+Cada trabalho tem um README com os arquivos e as condições do experimento. Os relatórios em PDF e Word, as contas e as planilhas finais ficam na raiz da respectiva pasta; as fontes ficam em `refs/`. Os registros de elaboração dos trabalhos anteriores ficam em `tmp/`. Os caminhos históricos foram mantidos para preservar os links já compartilhados.
 
-## Continuidade entre os trabalhos
+O site apresenta os relatórios, contas e fórmulas, materiais de consulta e as duas calculadoras. Planilhas, fontes editáveis, fotos e gráficos avulsos podem ser consultados nas pastas do GitHub.
 
-O EX02 cita o EX01 como base do tratamento anterior à linearização: média, desvio padrão amostral, incerteza da média e combinação em quadratura. A aplicação utiliza os tempos e as incertezas próprias do segundo experimento. Não reutiliza medidas dimensionais, modelos de volume ou incertezas do paquímetro.
+## Referências e publicação
 
-Os três gráficos do EX02 foram produzidos na [Calculadora de gráficos](apoio/programa-graficos/), desenvolvida para esse trabalho e citada na metodologia e nas referências. O aplicativo permite inserir X, vX, Y e vY, exibir barras de incerteza, ajustar uma reta ou desenhar uma curva com parâmetros informados e exportar figuras. O [portal](apoio/portal/) oferece acesso geral aos dois trabalhos e aos materiais.
+- [Materiais compartilhados](apoio/referencias_gerais/README.md)
+- [Organização e publicação do site](apoio/portal/README.md)
 
-Os nomes e caminhos internos de EX01 e EX02 foram preservados. A página inicial do GitHub Pages passou a ser o portal; a Calculadora de gráficos fica em `/calculadora-de-grafico/`. Atualizações enviadas para `main` publicam automaticamente a versão revisada dos documentos e das páginas.
-
-
-## Trabalho 03
-
-EX03: prática de 06/10/2026, 17 alturas e 51 tempos conferidos. [Relatório final](FisicaEx03/Relatorio_Final.pdf) e [versão editável](FisicaEx03/Relatorio_Final.docx), [planilha calculada](FisicaEx03/Tabela_Medidas_Calculadas.xlsx), [resolução](FisicaEx03/Resolucao_Completa.pdf) e [resultados](FisicaEx03/Resultados_Finais.pdf). As calculadoras incluem o tratamento de queda livre e cinco gráficos do EX03. O [guia do EX03](FisicaEx03/README.md) registra as hipóteses e as limitações dos ajustes.
+Alterações na branch `main` dos trabalhos ou da pasta de apoio acionam a publicação automática. `.pages/` é uma cópia gerada para publicação e não é versionada. As medidas e hipóteses são próprias de cada experimento; consulte o guia correspondente antes de reutilizar dados.
