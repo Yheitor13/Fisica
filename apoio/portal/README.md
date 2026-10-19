@@ -4,8 +4,8 @@
 
 ## Conteúdo e navegação
 
-- Quatro relatórios com acesso direto ao PDF.
-- Contas e fórmulas recolhidas dentro do cartão de cada trabalho.
+- Lista de pastas EX01 a EX04, com relatórios em PDF.
+- Relatórios, contas e fórmulas dentro de cada pasta expansível.
 - Duas calculadoras: Física Experimental e gráficos.
 - Apostila e materiais de consulta.
 
@@ -13,7 +13,7 @@ Planilhas, Word, fotos e figuras avulsas ficam acessíveis no repositório, sem 
 
 ## Aparência e acessibilidade
 
-HTML e CSS sem dependências externas. Layout em duas colunas no computador e uma no celular, navegação sem menu escondido, títulos hierárquicos, link de salto para o conteúdo, foco visível e controles com área de toque confortável. Os links abrem na mesma aba para manter a navegação previsível. O desenho da trajetória é decorativo.
+HTML e CSS sem dependências externas. Índice compacto com aparência de gerenciador de arquivos, sem apresentação ou ilustrações. Pastas expansíveis, títulos hierárquicos, link de salto para o conteúdo, foco visível e controles com área de toque confortável. Os links abrem na mesma aba. As duas calculadoras ficam no topo; no celular, os links se organizam em uma coluna.
 
 Referências de projeto: [layout responsivo GOV.UK](https://design-system.service.gov.uk/styles/layout/) e [estrutura de página W3C](https://www.w3.org/WAI/tutorials/page-structure/).
 
