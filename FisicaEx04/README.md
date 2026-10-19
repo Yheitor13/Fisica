@@ -23,3 +23,7 @@ Os ajustes principais usam as dez posições com três medidas, de 5 a 50 cm. A 
 A velocidade inicial obtida é (1,42 ± 0,02) m/s. O relatório apresenta hipóteses, incertezas, ajustes, gráficos e limitações. As fórmulas de tratamento estão na planilha; os ajustes numéricos precisam ser recalculados pelo script se as medidas forem alteradas.
 
 O script em memoria_calculos requer Python com numpy, scipy, openpyxl e matplotlib. Ele lê a planilha original desta pasta e gera resultados e gráficos novamente.
+
+## Histórico
+
+Materiais anteriores ao tratamento com a incerteza confirmada estão separados em [historico/](historico/README.md). Use os documentos da raiz desta pasta como versão atual.
