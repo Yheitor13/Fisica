@@ -48,7 +48,7 @@ A antiga pasta `trab02` no histórico do GitHub foi consolidada nesta `FisicaEx0
 
 ## Gerar novos gráficos
 
-Use a **[Calculadora de gráficos](https://yheitor13.github.io/Fisica/calculadora-de-grafico/)**, também disponível em [programa-graficos/](../apoio/programa-graficos/). O botão Exemplo EX02 carrega os nove pontos já linearizados deste trabalho, com vX e vY propagados. Para reproduzir a reta do relatório, marque a regressão, escolha **pesos 1/vY²** e atualize o gráfico. O programa não faz a linearização automaticamente. Permite exportar PNG (3600 × 2400 pixels) e SVG vetorial.
+Use a **[Calculadora de gráficos](https://yheitor13.github.io/labfisica/calculadora-de-grafico/)**, também disponível em [programa-graficos/](../apoio/programa-graficos/). O botão Exemplo EX02 carrega os nove pontos já linearizados deste trabalho, com vX e vY propagados. Para reproduzir a reta do relatório, marque a regressão, escolha **pesos 1/vY²** e atualize o gráfico. O programa não faz a linearização automaticamente. Permite exportar PNG (3600 × 2400 pixels) e SVG vetorial.
 
 
 ## Gráficos produzidos na Calculadora de gráficos
@@ -66,4 +66,4 @@ O [relatório do EX01](../FisicaEx01/Relatório_Final.pdf), de Fernandes et al. 
 
 A reutilização é metodológica: medidas, modelos de volume e incertezas do paquímetro do EX01 não são transportados ao EX02. Aqui permanecem σinst = 0,0001 s e σx = 1 cm, com propagação para os logaritmos e regressão conforme o material específico do segundo experimento. A conferência está em [tmp/relatorio/verificacao_metodo_ex01.json](tmp/relatorio/verificacao_metodo_ex01.json).
 
-[Portal dos trabalhos](https://yheitor13.github.io/Fisica/) · [Pasta de apoio](../apoio/)
+[Portal dos trabalhos](https://yheitor13.github.io/labfisica/) · [Pasta de apoio](../apoio/)

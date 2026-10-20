@@ -2,7 +2,7 @@
 
 **Versão 1.2 — 05/10/2026.** Interface simplificada. Desenvolvida para a elaboração dos gráficos do trabalho 02 de Física Geral Experimental I.
 
-**[Abrir o programa](https://yheitor13.github.io/Fisica/calculadora-de-grafico/)**
+**[Abrir o programa](https://yheitor13.github.io/labfisica/calculadora-de-grafico/)**
 
 Aplicativo gratuito para representar medidas experimentais com barras de incerteza horizontais e verticais, ajustar uma reta opcional e exportar figuras para relatórios. HTML, CSS e JavaScript; todo o processamento ocorre no navegador. Não exige cadastro, instalação, banco de dados ou servidor de processamento.
 
@@ -68,7 +68,7 @@ O fluxo [`.github/workflows/pages.yml`](../../.github/workflows/pages.yml) testa
 
 1. Em **Settings → Pages → Build and deployment**, selecione **GitHub Actions**.
 2. Envie as alterações para `main` ou execute o fluxo **Publicar portal de Física** em **Actions → Run workflow**.
-3. Aguarde o trabalho de publicação terminar. Neste repositório, o endereço é `https://yheitor13.github.io/Fisica/calculadora-de-grafico/`.
+3. Aguarde o trabalho de publicação terminar. Neste repositório, o endereço é `https://yheitor13.github.io/labfisica/calculadora-de-grafico/`.
 
 Em um fork, habilite Actions e Pages e atualize os links deste README e da interface para a sua conta. Não são necessários secrets nem serviços pagos. Consulte a [documentação oficial do GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
@@ -105,7 +105,7 @@ Os gráficos do relatório foram exportados pela interface em PNG e SVG. As vers
 
 A reprodução gráfica não recalcula as incertezas dos coeficientes, qui-quadrado ou propagação: esses resultados continuam documentados no relatório. Fotografias, equações e tabelas do relatório são independentes do aplicativo.
 
-[Voltar ao portal de Física Experimental](https://yheitor13.github.io/Fisica/)
+[Voltar ao portal de Física Experimental](https://yheitor13.github.io/labfisica/)
 
 
 ## EX03

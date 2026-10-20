@@ -13,7 +13,7 @@ const calculator=path.join(root,'apoio/calculadora-fisica');
 for(const name of ['index.html','style.css','engine.js','lab.js','freefall.js','ex03-data.js','app.js','xlsx.js','README.md'])copy(path.join(calculator,name),path.join(out,'calculadora-fisica',name));
 // Preserve previously shared URLs and the historical report reference.
 fs.mkdirSync(path.join(out,'graficolab'),{recursive:true});
-fs.writeFileSync(path.join(out,'graficolab','index.html'),`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=../calculadora-de-grafico/"><link rel="canonical" href="https://yheitor13.github.io/Fisica/calculadora-de-grafico/"><title>Calculadora de gráficos</title></head><body><a href="../calculadora-de-grafico/">Abrir calculadora de gráficos</a></body></html>`);
+fs.writeFileSync(path.join(out,'graficolab','index.html'),`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=../calculadora-de-grafico/"><link rel="canonical" href="https://yheitor13.github.io/labfisica/calculadora-de-grafico/"><title>Calculadora de gráficos</title></head><body><a href="../calculadora-de-grafico/">Abrir calculadora de gráficos</a></body></html>`);
 for(const experiment of ['FisicaEx01','FisicaEx02','FisicaEx03','FisicaEx04']){
  for(const entry of fs.readdirSync(path.join(root,experiment),{withFileTypes:true})){
   if(entry.isFile()&&/\.(pdf|docx|xlsx)$/i.test(entry.name))copy(path.join(root,experiment,entry.name),path.join(out,experiment,entry.name));

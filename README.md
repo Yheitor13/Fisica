@@ -2,7 +2,7 @@
 
 Relatórios de Física Geral Experimental I, Universidade Federal de Uberlândia.
 
-**[Abrir o site dos trabalhos](https://yheitor13.github.io/Fisica/)**
+**[Abrir o site dos trabalhos](https://yheitor13.github.io/labfisica/)**
 
 ## Relatórios e contas
 
@@ -15,8 +15,8 @@ Relatórios de Física Geral Experimental I, Universidade Federal de Uberlândia
 
 ## Calculadoras
 
-- [Calculadora de Física Experimental](https://yheitor13.github.io/Fisica/calculadora-fisica/) — médias, desvio padrão, incertezas e tratamento de medidas.
-- [Calculadora de gráficos](https://yheitor13.github.io/Fisica/calculadora-de-grafico/) — barras de incerteza, ajustes e exportação de gráficos.
+- [Calculadora de Física Experimental](https://yheitor13.github.io/labfisica/calculadora-fisica/) — médias, desvio padrão, incertezas e tratamento de medidas.
+- [Calculadora de gráficos](https://yheitor13.github.io/labfisica/calculadora-de-grafico/) — barras de incerteza, ajustes e exportação de gráficos.
 
 ## Organização das pastas
 

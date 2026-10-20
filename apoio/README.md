@@ -11,4 +11,4 @@ Esta pasta reúne o material complementar à leitura dos relatórios. Os conteú
 
 Os roteiros, registros de medidas e fotografias específicos continuam em `FisicaEx01/refs/` e `FisicaEx02/refs/`. Materiais de desenvolvimento de cada trabalho permanecem nas respectivas pastas `tmp/` para preservar os registros históricos.
 
-[Portal](https://yheitor13.github.io/Fisica/) · [Calculadora de gráficos](https://yheitor13.github.io/Fisica/calculadora-de-grafico/) · [EX01](../FisicaEx01/) · [EX02](../FisicaEx02/)
+[Portal](https://yheitor13.github.io/labfisica/) · [Calculadora de gráficos](https://yheitor13.github.io/labfisica/calculadora-de-grafico/) · [EX01](../FisicaEx01/) · [EX02](../FisicaEx02/)

@@ -1,6 +1,6 @@
 # Site dos trabalhos de Física
 
-[Site publicado](https://yheitor13.github.io/Fisica/)
+[Site publicado](https://yheitor13.github.io/labfisica/)
 
 ## Conteúdo e navegação
 
