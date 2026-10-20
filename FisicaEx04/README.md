@@ -27,3 +27,7 @@ O script em memoria_calculos requer Python com numpy, scipy, openpyxl e matplotl
 ## Histórico
 
 Materiais anteriores ao tratamento com a incerteza confirmada estão separados em [historico/](historico/README.md). Use os documentos da raiz desta pasta como versão atual.
+
+## Revisão do relatório em 19/10/2026
+
+Marcações do Word aplicadas: retirada a repetição de data e participantes na introdução; metodologia descrita conforme o roteiro. Três fotos incluídas na metodologia, duas lado a lado; originais em [refs/Fotos](refs/Fotos/). Removido o apêndice com a tabela digitalizada. Referências e citações conferidas com a apostila e os materiais de aula, seguindo o padrão dos trabalhos 02 e 03. Sumário e listas atualizados. Relatório revisado com 16 páginas; medidas, tabelas numéricas e resultados preservados.
